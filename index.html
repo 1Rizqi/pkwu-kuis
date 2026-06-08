@@ -20,27 +20,14 @@
                         serif: ['Lora', 'serif'],
                     },
                     colors: {
-                        // Override warna bawaan HTML menjadi palet Dark Mode
-                        white: '#1E293B',      // Mengubah bg-white menjadi Slate-800 (Warna Kartu)
-                        black: '#FFFFFF',      // Mengubah efek hover tombol hitam menjadi putih
-                        gray: {
-                            100: '#1E293B',    // Mengubah background terang menjadi gelap
-                            200: '#334155',    // Mengubah garis tepi (border) menjadi Slate-700
-                            400: '#94A3B8',    // Ikon chevron
-                            900: '#F8FAFC',    // Mengubah judul teks hitam menjadi putih terang
-                        },
-                        red: { 800: '#FDA4AF' },   // Penyesuaian warna teks indikator Esai
-                        green: { 600: '#86EFAC' }, // Penyesuaian ikon bab
-                        blue: { 600: '#93C5FD' },
-                        orange: { 600: '#FDBA74' },
-                        purple: { 600: '#D8B4FE' },
-                        
-                        // Warna Semantic Khusus
-                        paper: '#0F172A',      // Background utama website (Slate-900)
-                        paperDark: '#334155',  // Background saat elemen disorot/hover
-                        ink: '#E2E8F0',        // Warna teks paragraf utama
-                        inkMuted: '#94A3B8',   // Warna teks sekunder/deskripsi
-                        primary: '#38BDF8',    // Warna biru aksen (Sky-400)
+                        themeBg: 'var(--bg-primary)',
+                        themeCard: 'var(--bg-card)',
+                        themeCardHover: 'var(--bg-hover)',
+                        themeBorder: 'var(--border-color)',
+                        themeText: 'var(--text-main)',
+                        themeMuted: 'var(--text-muted)',
+                        themeAccent: 'var(--accent-primary)',
+                        themeAccentHover: 'var(--accent-primary-hover)',
                     }
                 }
             }
@@ -48,9 +35,89 @@
     </script>
 
     <style>
+        /* CSS Variables for Themes */
+        :root {
+            /* Fallback to dark theme as default */
+            --bg-primary: #0F172A;
+            --bg-card: #1E293B;
+            --bg-hover: #334155;
+            --border-color: #334155;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --accent-primary: #38BDF8;
+            --accent-primary-hover: #7DD3FC;
+            
+            --bg-marker-pg: rgba(245, 158, 11, 0.2);
+            --text-marker-pg: #FDE047;
+            --border-marker-pg: rgba(245, 158, 11, 0.4);
+            --bg-marker-esai: rgba(225, 29, 72, 0.2);
+            --text-marker-esai: #FDA4AF;
+            --border-marker-esai: rgba(225, 29, 72, 0.4);
+        }
+
+        .theme-dark {
+            --bg-primary: #0F172A;
+            --bg-card: #1E293B;
+            --bg-hover: #334155;
+            --border-color: #334155;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --accent-primary: #38BDF8;
+            --accent-primary-hover: #7DD3FC;
+
+            --bg-marker-pg: rgba(245, 158, 11, 0.2);
+            --text-marker-pg: #FDE047;
+            --border-marker-pg: rgba(245, 158, 11, 0.4);
+            --bg-marker-esai: rgba(225, 29, 72, 0.2);
+            --text-marker-esai: #FDA4AF;
+            --border-marker-esai: rgba(225, 29, 72, 0.4);
+        }
+
+        .theme-light {
+            --bg-primary: #F8FAFC;
+            --bg-card: #FFFFFF;
+            --bg-hover: #F1F5F9;
+            --border-color: #E2E8F0;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
+            --accent-primary: #0284C7;
+            --accent-primary-hover: #0369A1;
+
+            --bg-marker-pg: rgba(245, 158, 11, 0.15);
+            --text-marker-pg: #B45309;
+            --border-marker-pg: rgba(245, 158, 11, 0.3);
+            --bg-marker-esai: rgba(225, 29, 72, 0.12);
+            --text-marker-esai: #BE123C;
+            --border-marker-esai: rgba(225, 29, 72, 0.3);
+        }
+
+        .theme-sepia {
+            --bg-primary: #F4EFE6;
+            --bg-card: #FCF9F2;
+            --bg-hover: #EFE9DC;
+            --border-color: #E4DAC4;
+            --text-main: #433422;
+            --text-muted: #7D6B58;
+            --accent-primary: #B45309;
+            --accent-primary-hover: #92400E;
+
+            --bg-marker-pg: rgba(180, 83, 9, 0.12);
+            --text-marker-pg: #92400E;
+            --border-marker-pg: rgba(180, 83, 9, 0.25);
+            --bg-marker-esai: rgba(190, 18, 60, 0.1);
+            --text-marker-esai: #9F1239;
+            --border-marker-esai: rgba(190, 18, 60, 0.25);
+        }
+
+        /* Reading focus size overrides */
+        .font-size-sm .materi-text p, .font-size-sm .materi-text li { font-size: 0.95rem; }
+        .font-size-md .materi-text p, .font-size-md .materi-text li { font-size: 1.05rem; }
+        .font-size-lg .materi-text p, .font-size-lg .materi-text li { font-size: 1.2rem; }
+        .font-size-xl .materi-text p, .font-size-xl .materi-text li { font-size: 1.35rem; }
+
         body {
-            background-color: #0F172A; /* Slate 900 */
-            color: #E2E8F0; /* Slate 200 */
+            background-color: var(--bg-primary);
+            color: var(--text-main);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -72,13 +139,13 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background-color: #38BDF8; /* Sky 400 */
+            background-color: var(--accent-primary);
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
 
         .tab-btn.active {
-            color: #38BDF8;
+            color: var(--accent-primary);
             font-weight: 600;
         }
 
@@ -107,19 +174,21 @@
         .materi-text p, .materi-text ul, .materi-text ol {
             margin-bottom: 1.25rem;
             line-height: 1.8;
-            font-size: 1.05rem;
-            color: #E2E8F0;
+            color: var(--text-main);
         }
         .materi-text strong {
-            color: #F8FAFC;
+            color: var(--text-main);
+            font-weight: 700;
         }
         .materi-text h4 {
             font-family: 'Lora', serif;
             font-size: 1.35rem;
             font-weight: 600;
-            color: #F8FAFC;
+            color: var(--text-main);
             margin-top: 2rem;
             margin-bottom: 0.75rem;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 0.5rem;
         }
         .materi-text li {
             margin-bottom: 0.5rem;
@@ -135,158 +204,722 @@
             border-radius: 0.25rem;
             margin-right: 0.5rem;
             transform: translateY(-2px);
-            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
             letter-spacing: 0.025em;
         }
         
-        /* Modifikasi Stabilo & Garis Tepi Mode Gelap */
+        /* Modifikasi Stabilo & Garis Tepi Dinamis */
         .marker-pg { 
-            background-color: rgba(245, 158, 11, 0.2); 
-            color: #FDE047; 
-            border: 1px solid rgba(245, 158, 11, 0.4); 
+            background-color: var(--bg-marker-pg); 
+            color: var(--text-marker-pg); 
+            border: 1px solid var(--border-marker-pg); 
         }
         .marker-esai { 
-            background-color: rgba(225, 29, 72, 0.2); 
-            color: #FDA4AF; 
-            border: 1px solid rgba(225, 29, 72, 0.4); 
+            background-color: var(--bg-marker-esai); 
+            color: var(--text-marker-esai); 
+            border: 1px solid var(--border-marker-esai); 
         }
 
         .highlight-block {
             border-left: 4px solid #F59E0B; /* Amber-500 */
-            padding-left: 1.25rem;
+            padding: 1rem 1.25rem;
             margin: 1.5rem 0;
-            background: linear-gradient(90deg, rgba(245,158,11,0.15) 0%, rgba(15,23,42,0) 100%);
+            border-radius: 0 0.5rem 0.5rem 0;
+            background: linear-gradient(90deg, var(--bg-marker-pg) 0%, rgba(15,23,42,0) 100%);
+            transition: all 0.3s ease;
         }
         .highlight-block-esai {
             border-left: 4px solid #E11D48; /* Rose-600 */
-            padding-left: 1.25rem;
+            padding: 1rem 1.25rem;
             margin: 1.5rem 0;
-            background: linear-gradient(90deg, rgba(225,29,72,0.15) 0%, rgba(15,23,42,0) 100%);
+            border-radius: 0 0.5rem 0.5rem 0;
+            background: linear-gradient(90deg, var(--bg-marker-esai) 0%, rgba(15,23,42,0) 100%);
+            transition: all 0.3s ease;
+        }
+
+        /* Temporary flash effect when scrolling to target */
+        @keyframes target-flash {
+            0% { background-color: var(--accent-primary); color: #fff; }
+            50% { background-color: var(--accent-primary); color: #fff; }
+            100% { background-color: transparent; }
+        }
+        .flash-target {
+            animation: target-flash 1.5s ease-out 2;
+            border-radius: 0.375rem;
+            padding: 0.25rem;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+
+        /* Flip card animation styles */
+        .flashcard-perspective {
+            perspective: 1000px;
+        }
+        .flashcard-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flashcard-inner.flipped {
+            transform: rotateY(180deg);
+        }
+        .flashcard-front, .flashcard-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .flashcard-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Overrides for Accordion Items to match themes */
+        .accordion-item {
+            background-color: var(--bg-card) !important;
+            border-color: var(--border-color) !important;
+        }
+        .accordion-item button {
+            background-color: var(--bg-card) !important;
+            color: var(--text-main) !important;
+        }
+        .accordion-item button:hover {
+            background-color: var(--bg-hover) !important;
+        }
+        .accordion-item button h3 {
+            color: var(--text-main) !important;
+        }
+        .accordion-content {
+            border-color: var(--border-color) !important;
+        }
+        .accordion-content > div {
+            border-color: var(--border-color) !important;
+            background-color: var(--bg-card) !important;
+        }
+
+        @media (max-w: 1023px) {
+            body {
+                padding-bottom: 70px; /* Space for mobile bottom nav */
+            }
+            body.focus-mode-active {
+                padding-bottom: 0px; /* No mobile bottom nav in focus mode */
+            }
+        }
+
+        /* Focus mode overrides */
+        body.focus-mode-active header,
+        body.focus-mode-active footer,
+        body.focus-mode-active nav,
+        body.focus-mode-active .non-focus-element {
+            display: none !important;
+        }
+        body.focus-mode-active main {
+            padding-top: 1rem;
+            padding-bottom: 2rem;
         }
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="theme-dark flex flex-col min-h-screen bg-themeBg text-themeText font-size-md transition-colors duration-300">
 
-    <header class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-6 py-5">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+    <header class="bg-themeCard/80 backdrop-blur-md border-b border-themeBorder sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h1 class="font-serif text-2xl font-bold text-gray-900 tracking-tight">Materi PKWU Kelas XI</h1>
-                    <p class="text-sm text-inkMuted font-medium mt-1"><i class="fa-solid fa-book-open mr-1.5"></i>Persiapan Sumatif Akhir Semester Genap</p>
+                    <h1 class="font-serif text-2xl font-bold tracking-tight text-themeText">Materi PKWU Kelas XI</h1>
+                    <p class="text-sm text-themeMuted font-medium mt-1"><i class="fa-solid fa-book-open mr-1.5 text-themeAccent"></i>Persiapan Sumatif Akhir Semester Genap</p>
                 </div>
-                <div class="bg-paperDark px-3 py-1.5 rounded-md border border-gray-200 shadow-sm flex items-center gap-2 text-sm font-medium text-ink">
-                    <i class="fa-regular fa-clock text-primary"></i> 90 Menit | 45 Soal
+                <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
+                    <!-- Tema Switcher -->
+                    <div class="flex items-center bg-themeBg border border-themeBorder p-1 rounded-lg transition-colors">
+                        <button onclick="setTheme('light')" id="theme-btn-light" class="w-8 h-8 rounded-md flex items-center justify-center text-sm transition-all text-themeMuted hover:text-themeText" title="Mode Terang">
+                            <i class="fa-solid fa-sun"></i>
+                        </button>
+                        <button onclick="setTheme('dark')" id="theme-btn-dark" class="w-8 h-8 rounded-md flex items-center justify-center text-sm transition-all text-themeMuted hover:text-themeText" title="Mode Gelap">
+                            <i class="fa-solid fa-moon"></i>
+                        </button>
+                        <button onclick="setTheme('sepia')" id="theme-btn-sepia" class="w-8 h-8 rounded-md flex items-center justify-center text-sm transition-all text-themeMuted hover:text-themeText" title="Mode Sepia">
+                            <i class="fa-solid fa-coffee"></i>
+                        </button>
+                    </div>
+
+                    <!-- Mode Fokus Button -->
+                    <button onclick="toggleFocusMode()" class="bg-themeBg hover:bg-themeCardHover border border-themeBorder px-3.5 py-1.5 rounded-lg flex items-center gap-2 text-sm text-themeText transition-all" title="Mode Fokus Baca (Tanpa Gangguan)">
+                        <i class="fa-solid fa-expand text-themeAccent"></i>
+                        <span class="font-medium">Mode Fokus</span>
+                    </button>
+
+                    <!-- Info Soal -->
+                    <div class="bg-themeBg px-3 py-1.5 rounded-md border border-themeBorder flex items-center gap-2 text-sm font-medium text-themeText">
+                        <i class="fa-regular fa-clock text-themeAccent"></i> 90 Menit | 45 Soal
+                    </div>
                 </div>
             </div>
 
-            <!-- Navigasi Tab -->
-            <nav class="flex space-x-6 mt-6 border-b border-gray-100">
-                <button onclick="switchTab('prioritas')" class="tab-btn active pb-3 text-inkMuted hover:text-primary focus:outline-none">
-                    <i class="fa-solid fa-list-check mr-2"></i>Prioritas Belajar
-                </button>
-                <button onclick="switchTab('materi')" class="tab-btn pb-3 text-inkMuted hover:text-primary focus:outline-none">
-                    <i class="fa-solid fa-align-left mr-2"></i>Materi Lengkap
-                </button>
-            </nav>
+            <!-- Search and Tab Row -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-5 pt-3 border-t border-themeBorder/40">
+                <!-- Navigasi Tab -->
+                <nav class="hidden lg:flex space-x-6 border-b border-transparent">
+                    <button onclick="switchTab('prioritas')" class="tab-btn active pb-2 text-themeMuted hover:text-themeAccent focus:outline-none flex items-center gap-2 text-sm sm:text-base">
+                        <i class="fa-solid fa-list-check"></i> Prioritas Belajar
+                    </button>
+                    <button onclick="switchTab('materi')" class="tab-btn pb-2 text-themeMuted hover:text-themeAccent focus:outline-none flex items-center gap-2 text-sm sm:text-base">
+                        <i class="fa-solid fa-align-left"></i> Materi Lengkap
+                    </button>
+                    <button onclick="switchTab('flashcard')" class="tab-btn pb-2 text-themeMuted hover:text-themeAccent focus:outline-none flex items-center gap-2 text-sm sm:text-base">
+                        <i class="fa-solid fa-copy"></i> Kartu Belajar
+                    </button>
+                </nav>
+
+                <!-- Search Input -->
+                <div class="relative w-full sm:max-w-xs">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-themeMuted">
+                        <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                    </span>
+                    <input type="text" id="global-search" oninput="handleSearch(this.value)" placeholder="Cari materi / nomor soal..." class="w-full pl-9 pr-3 py-1.5 text-xs sm:text-sm bg-themeBg border border-themeBorder rounded-lg focus:outline-none focus:ring-2 focus:ring-themeAccent text-themeText placeholder-themeMuted transition-all">
+                </div>
+            </div>
         </div>
     </header>
 
     <main class="flex-grow w-full py-8 px-4 sm:px-6">
 
-        <div id="tab-prioritas" class="max-w-4xl mx-auto animate-fade-in">
-            <div class="text-center mb-10">
-                <h2 class="font-serif text-3xl font-bold text-gray-900 mb-3">Peta Kisi-Kisi Ujian</h2>
-                <p class="text-inkMuted max-w-2xl mx-auto">Daftar ini adalah ringkasan indikator soal yang <strong>pasti keluar</strong>. Gunakan sebagai ceklis belajarmu. Penjelasan detailnya dapat dibaca di tab Materi Lengkap.</p>
+        <div id="tab-prioritas" class="max-w-6xl mx-auto animate-fade-in">
+            <div class="text-center mb-8">
+                <h2 class="font-serif text-3xl font-bold text-themeText mb-3">Peta Kisi-Kisi Ujian</h2>
+                <p class="text-themeMuted max-w-2xl mx-auto">Daftar ini adalah ringkasan indikator soal yang <strong>pasti keluar</strong>. Gunakan sebagai ceklis belajarmu. Penjelasan detailnya dapat dibaca di tab Materi Lengkap.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Dashboard Ringkasan & Progress (Mobile) -->
+            <div class="lg:hidden w-full bg-themeCard p-5 rounded-xl border border-themeBorder shadow-sm mb-6 flex flex-col gap-4">
+                <div>
+                    <h3 class="font-bold text-base text-themeText mb-1 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-line text-themeAccent"></i> Progress Belajar Kamu
+                    </h3>
+                    <div class="flex justify-between text-xs text-themeMuted mb-2">
+                        <span>Paham: <strong id="progress-text-count-mob" class="text-themeText">0/45</strong></span>
+                        <span id="progress-percent-mob" class="font-semibold text-themeAccent">0%</span>
+                    </div>
+                    <div class="w-full bg-themeBg h-2 rounded-full overflow-hidden">
+                        <div id="progress-bar-mob" class="bg-themeAccent h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                    </div>
+                </div>
+                <!-- Filter buttons -->
+                <div class="flex gap-2">
+                    <button onclick="setFilter('all')" id="filter-btn-all-mob" class="btn-filter px-3 py-1.5 text-xs font-semibold rounded-lg bg-themeAccent text-white shadow-sm transition-all grow">Semua</button>
+                    <button onclick="setFilter('pending')" id="filter-btn-pending-mob" class="btn-filter px-3 py-1.5 text-xs font-semibold rounded-lg bg-themeBg border border-themeBorder text-themeMuted transition-all grow">Sisa Soal</button>
+                    <button onclick="setFilter('done')" id="filter-btn-done-mob" class="btn-filter px-3 py-1.5 text-xs font-semibold rounded-lg bg-themeBg border border-themeBorder text-themeMuted transition-all grow">Paham</button>
+                </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8 items-start">
                 
-                <!-- Kolom Kiri -->
-                <div class="space-y-6">
-                    <!-- Bab 1 -->
-                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                        <h3 class="font-serif font-bold text-lg border-b border-gray-100 pb-3 mb-4 text-gray-900">
-                            <i class="fa-solid fa-leaf text-green-600 mr-2"></i> Bab 1: Limbah & Bangun Ruang
-                        </h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 1</span> Pengertian limbah secara umum.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 2</span> Ciri limbah berbentuk bangun ruang.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 3</span> Pemanfaatan botol plastik bekas.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 4</span> Limbah berdasarkan bentuknya (Gas).</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 5</span> Dampak limbah cair terhadap lingkungan.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 6</span> Kelompok limbah anorganik.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 7</span> Potensi limbah pertanian (Organik).</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 8</span> Dampak limbah anorganik.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 9</span> Solusi penanganan limbah plastik.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 10</span> Limbah yang dapat dijadikan kerajinan.</li>
-                            <li class="flex items-start text-sm font-medium text-red-800"><span class="exam-marker marker-esai shrink-0 w-16 justify-center">ESAI 45</span> Manfaat kerajinan limbah & contohnya.</li>
-                        </ul>
-                    </div>
+                <!-- Kolom Kiri: Daftar Kisi-kisi -->
+                <div class="w-full lg:w-2/3 space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <!-- Bab 1 -->
+                        <div class="bg-themeCard p-5 rounded-xl border border-themeBorder shadow-sm">
+                            <h3 class="font-serif font-bold text-lg border-b border-themeBorder pb-3 mb-4 text-themeText flex items-center">
+                                <i class="fa-solid fa-leaf text-emerald-500 mr-2.5"></i> Bab 1: Limbah & Bangun Ruang
+                            </h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-1">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-1')">
+                                        <input type="checkbox" id="chk-pg-1" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 1</span>
+                                        <span class="q-text text-themeText">Pengertian limbah secara umum.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-1')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-2">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-2')">
+                                        <input type="checkbox" id="chk-pg-2" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 2</span>
+                                        <span class="q-text text-themeText">Ciri limbah berbentuk bangun ruang.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-2')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-3">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-3')">
+                                        <input type="checkbox" id="chk-pg-3" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 3</span>
+                                        <span class="q-text text-themeText">Pemanfaatan botol plastik bekas.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-3')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-4">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-4')">
+                                        <input type="checkbox" id="chk-pg-4" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 4</span>
+                                        <span class="q-text text-themeText">Limbah berdasarkan bentuknya (Gas).</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-4')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-5">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-5')">
+                                        <input type="checkbox" id="chk-pg-5" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 5</span>
+                                        <span class="q-text text-themeText">Dampak limbah cair terhadap lingkungan.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-5')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-6">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-6')">
+                                        <input type="checkbox" id="chk-pg-6" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 6</span>
+                                        <span class="q-text text-themeText">Kelompok limbah anorganik.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-6')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-7">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-7')">
+                                        <input type="checkbox" id="chk-pg-7" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 7</span>
+                                        <span class="q-text text-themeText">Potensi limbah pertanian (Organik).</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-7')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-8">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-8')">
+                                        <input type="checkbox" id="chk-pg-8" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 8</span>
+                                        <span class="q-text text-themeText">Dampak limbah anorganik.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-8')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-9">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-9')">
+                                        <input type="checkbox" id="chk-pg-9" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 9</span>
+                                        <span class="q-text text-themeText">Solusi penanganan limbah plastik.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-9')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-10">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-10')">
+                                        <input type="checkbox" id="chk-pg-10" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 10</span>
+                                        <span class="q-text text-themeText">Limbah yang dapat dijadikan kerajinan.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-10')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="esai-45">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('esai-45')">
+                                        <input type="checkbox" id="chk-esai-45" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-esai shrink-0 w-16 justify-center">ESAI 45</span>
+                                        <span class="q-text text-themeText font-semibold">Manfaat kerajinan limbah & contohnya.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('esai-45')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
 
-                    <!-- Bab 2 -->
-                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                        <h3 class="font-serif font-bold text-lg border-b border-gray-100 pb-3 mb-4 text-gray-900">
-                            <i class="fa-solid fa-chart-pie text-blue-600 mr-2"></i> Bab 2: Usaha & Perizinan
-                        </h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-14 justify-center">PG 11,19</span> Faktor pemasaran usaha kerajinan.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 12</span> Penguasaan teknis usaha.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 13</span> Ancaman dalam analisis SWOT.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 14</span> Faktor manajemen usaha.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-14 justify-center">PG 15,20</span> Faktor pendukung/utama keberhasilan.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 16</span> Kegiatan administrasi usaha.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-14 justify-center">PG 17,21</span> Kegiatan perencanaan usaha.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 18</span> Kegiatan pemasaran usaha.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 22</span> Kepanjangan SITU.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 23</span> Kepanjangan NPWP.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 24</span> Dokumen legalitas usaha.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 25</span> Fungsi AMDAL.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 26</span> Hubungan TDP dengan legalitas.</li>
-                            <li class="flex items-start text-sm font-medium text-red-800"><span class="exam-marker marker-esai shrink-0 w-16 justify-center">ESAI 41</span> Penjelasan faktor usaha kerajinan.</li>
-                            <li class="flex items-start text-sm font-medium text-red-800"><span class="exam-marker marker-esai shrink-0 w-16 justify-center">ESAI 43</span> Membuat analisis SWOT.</li>
-                        </ul>
+                        <!-- Bab 2 -->
+                        <div class="bg-themeCard p-5 rounded-xl border border-themeBorder shadow-sm">
+                            <h3 class="font-serif font-bold text-lg border-b border-themeBorder pb-3 mb-4 text-themeText flex items-center">
+                                <i class="fa-solid fa-chart-pie text-sky-500 mr-2.5"></i> Bab 2: Usaha & Perizinan
+                            </h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-11-19">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-11-19')">
+                                        <input type="checkbox" id="chk-pg-11-19" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-14 justify-center">PG 11,19</span>
+                                        <span class="q-text text-themeText">Faktor pemasaran usaha kerajinan.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-11-19')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-12">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-12')">
+                                        <input type="checkbox" id="chk-pg-12" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 12</span>
+                                        <span class="q-text text-themeText">Penguasaan teknis usaha.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-12')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-13">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-13')">
+                                        <input type="checkbox" id="chk-pg-13" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 13</span>
+                                        <span class="q-text text-themeText">Ancaman dalam analisis SWOT.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-13')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-14">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-14')">
+                                        <input type="checkbox" id="chk-pg-14" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 14</span>
+                                        <span class="q-text text-themeText">Faktor manajemen usaha.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-14')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-15-20">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-15-20')">
+                                        <input type="checkbox" id="chk-pg-15-20" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-14 justify-center">PG 15,20</span>
+                                        <span class="q-text text-themeText">Faktor keberhasilan usaha.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-15-20')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-16">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-16')">
+                                        <input type="checkbox" id="chk-pg-16" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 16</span>
+                                        <span class="q-text text-themeText">Kegiatan administrasi usaha.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-16')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-17-21">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-17-21')">
+                                        <input type="checkbox" id="chk-pg-17-21" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-14 justify-center">PG 17,21</span>
+                                        <span class="q-text text-themeText">Kegiatan perencanaan usaha.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-17-21')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-18">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-18')">
+                                        <input type="checkbox" id="chk-pg-18" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 18</span>
+                                        <span class="q-text text-themeText">Kegiatan pemasaran usaha.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-18')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-22">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-22')">
+                                        <input type="checkbox" id="chk-pg-22" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 22</span>
+                                        <span class="q-text text-themeText">Kepanjangan SITU.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-22')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-23">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-23')">
+                                        <input type="checkbox" id="chk-pg-23" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 23</span>
+                                        <span class="q-text text-themeText">Kepanjangan NPWP.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-23')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-24">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-24')">
+                                        <input type="checkbox" id="chk-pg-24" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 24</span>
+                                        <span class="q-text text-themeText">Dokumen legalitas usaha (TDP).</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-24')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-25">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-25')">
+                                        <input type="checkbox" id="chk-pg-25" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 25</span>
+                                        <span class="q-text text-themeText">Fungsi AMDAL.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-25')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-26">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-26')">
+                                        <input type="checkbox" id="chk-pg-26" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 26</span>
+                                        <span class="q-text text-themeText">Hubungan TDP dengan legalitas.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-26')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="esai-41">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('esai-41')">
+                                        <input type="checkbox" id="chk-esai-41" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-esai shrink-0 w-16 justify-center">ESAI 41</span>
+                                        <span class="q-text text-themeText font-semibold">Penjelasan faktor usaha kerajinan.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('esai-41')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="esai-43">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('esai-43')">
+                                        <input type="checkbox" id="chk-esai-43" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-esai shrink-0 w-16 justify-center">ESAI 43</span>
+                                        <span class="q-text text-themeText font-semibold">Membuat analisis SWOT.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('esai-43')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Bab 3 -->
+                        <div class="bg-themeCard p-5 rounded-xl border border-themeBorder shadow-sm">
+                            <h3 class="font-serif font-bold text-lg border-b border-themeBorder pb-3 mb-4 text-themeText flex items-center">
+                                <i class="fa-solid fa-hammer text-amber-500 mr-2.5"></i> Bab 3: Produksi Kerajinan
+                            </h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-31">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-31')">
+                                        <input type="checkbox" id="chk-pg-31" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 31</span>
+                                        <span class="q-text text-themeText">Faktor kualitas kerajinan.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-31')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-32">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-32')">
+                                        <input type="checkbox" id="chk-pg-32" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 32</span>
+                                        <span class="q-text text-themeText">Penggunaan teknik ukir.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-32')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-33">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-33')">
+                                        <input type="checkbox" id="chk-pg-33" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 33</span>
+                                        <span class="q-text text-themeText">Fungsi benda pakai.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-33')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-34">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-34')">
+                                        <input type="checkbox" id="chk-pg-34" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 34</span>
+                                        <span class="q-text text-themeText">Kenyamanan penggunaan produk.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-34')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-35">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-35')">
+                                        <input type="checkbox" id="chk-pg-35" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 35</span>
+                                        <span class="q-text text-themeText">Pengaruh karakteristik bahan.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-35')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="esai-42">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('esai-42')">
+                                        <input type="checkbox" id="chk-esai-42" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-esai shrink-0 w-16 justify-center">ESAI 42</span>
+                                        <span class="q-text text-themeText font-semibold">Rancangan produk bahan limbah.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('esai-42')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Bab 4 & 5 -->
+                        <div class="bg-themeCard p-5 rounded-xl border border-themeBorder shadow-sm">
+                            <h3 class="font-serif font-bold text-lg border-b border-themeBorder pb-3 mb-4 text-themeText flex items-center">
+                                <i class="fa-solid fa-box-open text-purple-500 mr-2.5"></i> Bab 4-5: Kemasan & Promosi
+                            </h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-27">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-27')">
+                                        <input type="checkbox" id="chk-pg-27" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 27</span>
+                                        <span class="q-text text-themeText">Tujuan survei pasar.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-27')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-28-38">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-28-38')">
+                                        <input type="checkbox" id="chk-pg-28-38" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-14 justify-center">PG 28,38</span>
+                                        <span class="q-text text-themeText">Promosi media sosial & tujuannya.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-28-38')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-29">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-29')">
+                                        <input type="checkbox" id="chk-pg-29" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 29</span>
+                                        <span class="q-text text-themeText">Strategi sales promotion.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-29')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-30">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-30')">
+                                        <input type="checkbox" id="chk-pg-30" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 30</span>
+                                        <span class="q-text text-themeText">Sponsorship produk.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-30')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-36">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-36')">
+                                        <input type="checkbox" id="chk-pg-36" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 36</span>
+                                        <span class="q-text text-themeText">Fungsi estetika kemasan.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-36')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-37">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-37')">
+                                        <input type="checkbox" id="chk-pg-37" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 37</span>
+                                        <span class="q-text text-themeText">Pengaruh kemasan bagi pemasaran.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-37')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-39">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-39')">
+                                        <input type="checkbox" id="chk-pg-39" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 39</span>
+                                        <span class="q-text text-themeText">Strategi pemasaran lokal.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-39')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 border-b border-themeBorder/20 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="pg-40">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('pg-40')">
+                                        <input type="checkbox" id="chk-pg-40" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 40</span>
+                                        <span class="q-text text-themeText">Strategi promosi sesuai konsumen.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('pg-40')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                                <li class="flex items-center justify-between text-sm py-1.5 hover:bg-themeCardHover/20 px-2 rounded transition-colors group" data-qid="esai-44">
+                                    <div class="flex items-center gap-2.5 cursor-pointer select-none grow" onclick="toggleQuestion('esai-44')">
+                                        <input type="checkbox" id="chk-esai-44" class="rounded border-themeBorder text-themeAccent focus:ring-themeAccent w-4 h-4 cursor-pointer">
+                                        <span class="exam-marker marker-esai shrink-0 w-16 justify-center">ESAI 44</span>
+                                        <span class="q-text text-themeText font-semibold">Rancangan kemasan & promosi.</span>
+                                    </div>
+                                    <button onclick="scrollToQuestion('esai-44')" class="text-themeMuted hover:text-themeAccent p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity" title="Baca materi lengkap">
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Kolom Kanan -->
-                <div class="space-y-6">
-                    <!-- Bab 3 -->
-                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                        <h3 class="font-serif font-bold text-lg border-b border-gray-100 pb-3 mb-4 text-gray-900">
-                            <i class="fa-solid fa-hammer text-orange-600 mr-2"></i> Bab 3: Produksi Kerajinan
+                <!-- Kolom Kanan: Dashboard Progress & Filter (Desktop, Sticky) -->
+                <div class="hidden lg:block w-1/3 sticky top-24 bg-themeCard p-6 rounded-xl border border-themeBorder shadow-sm space-y-6 transition-all">
+                    <div>
+                        <h3 class="font-serif font-bold text-lg text-themeText mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line text-themeAccent"></i> Progress Belajar
                         </h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 31</span> Faktor kualitas kerajinan.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 32</span> Penggunaan teknik ukir.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 33</span> Fungsi benda pakai.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 34</span> Kenyamanan penggunaan produk.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 35</span> Pengaruh karakteristik bahan.</li>
-                            <li class="flex items-start text-sm font-medium text-red-800"><span class="exam-marker marker-esai shrink-0 w-16 justify-center">ESAI 42</span> Rancangan produk limbah bangun ruang.</li>
-                        </ul>
+                        <div class="flex justify-between text-sm text-themeMuted mb-2">
+                            <span>Materi Terkuasai: <strong id="progress-text-count" class="text-themeText">0/45</strong></span>
+                            <span id="progress-percent" class="font-semibold text-themeAccent">0%</span>
+                        </div>
+                        <div class="w-full bg-themeBg h-2.5 rounded-full overflow-hidden">
+                            <div id="progress-bar" class="bg-themeAccent h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
                     </div>
 
-                    <!-- Bab 4 & 5 -->
-                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                        <h3 class="font-serif font-bold text-lg border-b border-gray-100 pb-3 mb-4 text-gray-900">
-                            <i class="fa-solid fa-box-open text-purple-600 mr-2"></i> Bab 4-5: Kemasan & Promosi
-                        </h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 27</span> Tujuan survei pasar.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-14 justify-center">PG 28,38</span> Promosi media sosial & tujuannya.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 29</span> Strategi sales promotion.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 30</span> Sponsorship produk.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 36</span> Fungsi estetika kemasan.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 37</span> Pengaruh kemasan terhadap pemasaran.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 39</span> Strategi pemasaran lokal.</li>
-                            <li class="flex items-start text-sm text-ink"><span class="exam-marker marker-pg shrink-0 w-12 justify-center">PG 40</span> Strategi promosi sesuai konsumen.</li>
-                            <li class="flex items-start text-sm font-medium text-red-800"><span class="exam-marker marker-esai shrink-0 w-16 justify-center">ESAI 44</span> Rancangan kemasan & strategi pemasaran.</li>
-                        </ul>
+                    <div class="border-t border-themeBorder/40 pt-4">
+                        <h4 class="font-semibold text-sm text-themeText mb-3">Filter Tampilan Soal</h4>
+                        <div class="flex flex-col gap-2">
+                            <button onclick="setFilter('all')" id="filter-btn-all" class="btn-filter px-4 py-2 text-left text-sm font-medium rounded-lg bg-themeAccent text-white shadow-sm transition-all flex items-center justify-between">
+                                <span>Semua Kisi-Kisi</span>
+                                <span class="bg-white/20 text-xs px-2 py-0.5 rounded-full">45</span>
+                            </button>
+                            <button onclick="setFilter('pending')" id="filter-btn-pending" class="btn-filter px-4 py-2 text-left text-sm font-medium rounded-lg bg-themeBg border border-themeBorder text-themeMuted hover:bg-themeCardHover transition-all flex items-center justify-between">
+                                <span>Sisa Soal Ujian</span>
+                                <span id="count-pending" class="bg-themeBorder text-xs px-2 py-0.5 rounded-full text-themeText">45</span>
+                            </button>
+                            <button onclick="setFilter('done')" id="filter-btn-done" class="btn-filter px-4 py-2 text-left text-sm font-medium rounded-lg bg-themeBg border border-themeBorder text-themeMuted hover:bg-themeCardHover transition-all flex items-center justify-between">
+                                <span>Sudah Paham</span>
+                                <span id="count-done" class="bg-themeBorder text-xs px-2 py-0.5 rounded-full text-themeText">0</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-themeBorder/40 pt-4 text-xs text-themeMuted leading-relaxed space-y-2">
+                        <p class="font-semibold text-themeText"><i class="fa-solid fa-lightbulb text-amber-400"></i> Tips Belajar Fokus:</p>
+                        <p>1. Centang butir soal setelah Anda membacanya dan memahami konsepnya.</p>
+                        <p>2. Gunakan <strong>Kartu Belajar (Flashcards)</strong> untuk menguji daya ingat Anda (active recall) secara cepat.</p>
                     </div>
                 </div>
+
             </div>
-            
+
+            <!-- Start Reading CTA -->
             <div class="mt-12 text-center">
-                <button onclick="switchTab('materi')" class="bg-ink hover:bg-black text-white px-8 py-3 rounded-full font-medium transition-colors inline-flex items-center gap-2 shadow-md hover:shadow-lg">
+                <button onclick="switchTab('materi')" class="bg-themeAccent hover:bg-themeAccentHover text-white px-8 py-3.5 rounded-full font-semibold transition-all inline-flex items-center gap-2.5 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                     <i class="fa-solid fa-book-open-reader"></i> Mulai Baca Materi Lengkap
                 </button>
             </div>
@@ -295,14 +928,14 @@
         <div id="tab-materi" class="hidden animate-fade-in">
             
             <div class="reading-container">
-                <div class="mb-8 pb-4 border-b border-gray-200 flex justify-between items-end">
+                <div class="mb-8 pb-4 border-b border-themeBorder flex justify-between items-end">
                     <div>
-                        <h2 class="font-serif text-3xl font-bold text-gray-900">Modul Teks Asli</h2>
-                        <p class="text-inkMuted mt-2 text-sm">Disalin 100% dari dokumen PDF. Perhatikan bagian yang di-stabilo kuning/merah, itu adalah bagian yang keluar di ujian.</p>
+                        <h2 class="font-serif text-3xl font-bold text-themeText">Modul Materi Lengkap</h2>
+                        <p class="text-themeMuted mt-2 text-sm">Rangkuman 100% sesuai kisi-kisi. Klik pada penanda soal untuk menandai sudah paham.</p>
                     </div>
                     <div class="flex gap-2">
-                        <button onclick="toggleAllAccordions(true)" class="text-xs font-semibold text-inkMuted hover:text-ink bg-gray-100 px-3 py-1.5 rounded transition">Buka Semua</button>
-                        <button onclick="toggleAllAccordions(false)" class="text-xs font-semibold text-inkMuted hover:text-ink bg-gray-100 px-3 py-1.5 rounded transition">Tutup Semua</button>
+                        <button onclick="toggleAllAccordions(true)" class="text-xs font-semibold text-themeMuted hover:text-themeText bg-themeCard border border-themeBorder px-3 py-1.5 rounded transition-all">Buka Semua</button>
+                        <button onclick="toggleAllAccordions(false)" class="text-xs font-semibold text-themeMuted hover:text-themeText bg-themeCard border border-themeBorder px-3 py-1.5 rounded transition-all">Tutup Semua</button>
                     </div>
                 </div>
 
@@ -334,7 +967,7 @@
                                     <p><strong>1) Limbah Gas</strong><br>
                                     adalah Sisa buangan yang berbentuk gas dan dilepaskan ke udara.<br>
                                     <strong>Karakteristik:</strong> Tidak terlihat, Mudah tersebar, Dapat terakumulasi di atmosfer<br>
-                                    <strong>Contoh:</strong> Karbon dioksida $(CO_{2})$, oksida nitrogen (NOx), sulfur dioksida (SO2).<br>
+                                    <strong>Contoh:</strong> Karbon dioksida (CO<sub>2</sub>), oksida nitrogen (NO<sub>x</sub>), sulfur dioksida (SO<sub>2</sub>).<br>
                                     <strong>Sumber:</strong> Asap kendaraan bermotor, asap pabrik, pembakaran sampah, pembangkit listrik.<br>
                                     <strong>Dampak:</strong> Polusi udara, Pemanasan global, Hujan asam</p>
                                 </div>
@@ -1015,46 +1648,431 @@
                                     3. Maupun membuat website sederhana dengan biaya yang terjangkau.<br>
                                     Pemanfaatan media digital dapat membantu produk kerajinan lebih dikenal masyarakat luas dan meningkatkan peluang penjualan.</p>
                                 </div>
+                                 <div class="mt-8 p-6 bg-themeBg rounded-lg border border-themeBorder text-sm text-themeMuted leading-relaxed">
+                                     <p>A. Perencanaan Usaha Kerajinan dari Bahan Limbah Berbentuk Bangun Ruang<br>
+                                     B. Sistem Produksi Usaha Kerajinan dari Bahan Limbah Berbentuk Bangun Ruang<br>
+                                     C. Perhitungan Titik Impas (Break Even Point) Usaha Kerajinan dari Bahan Limbah Berbentuk Bangun Ruang (tidak diajarkan)<br>
+                                     D. Strategi Promosi Produk Hasil Usaha Kerajinan dari Bahan Limbah Berbentuk Bangun Ruang<br>
+                                     E. Laporan Kegiatan Usaha Kerajinan dari Bahan Limbah Berbentuk Bangun Ruang (tidak diajarkan)</p>
+                                 </div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                                <div class="mt-8 p-6 bg-paperDark rounded-lg border border-gray-200 text-sm text-inkMuted leading-relaxed">
-                                    <p>A. Perencanaan Usaha Kerajinan dari Bahan Limbah Berbentuk Bangun Ruang<br>
-                                    B. Sistem Produksi Usaha Kerajinan dari Bahan Limbah Berbentuk Bangun Ruang<br>
-                                    C. Perhitungan Titik Impas (Break Even Point) Usaha Kerajinan dari Bahan Limbah Berbentuk Bangun Ruang (tidak diajarkan)<br>
-                                    D. Strategi Promosi Produk Hasil Usaha Kerajinan dari Bahan Limbah Berbentuk Bangun Ruang<br>
-                                    E. Laporan Kegiatan Usaha Kerajinan dari Bahan Limbah Berbentuk Bangun Ruang (tidak diajarkan)</p>
-                                </div>
+        <!-- TAB FLASHCARD -->
+        <div id="tab-flashcard" class="hidden animate-fade-in max-w-3xl mx-auto">
+            <div class="text-center mb-8">
+                <h2 class="font-serif text-3xl font-bold text-themeText mb-3">Kartu Belajar (Flashcards)</h2>
+                <p class="text-themeMuted max-w-2xl mx-auto">Gunakan kartu ini untuk melatih ingatan Anda (*active recall*). Baca kisi-kisi di depan, coba tebak jawabannya, lalu klik kartu untuk melihat penjelasan detail dari modul.</p>
+            </div>
 
+            <!-- Flashcard Deck Container -->
+            <div class="flex flex-col items-center gap-6">
+                <!-- Progress Indicator -->
+                <div class="w-full flex justify-between items-center text-sm text-themeMuted px-2">
+                    <span id="flashcard-deck-name" class="font-semibold text-themeAccent">Memuat kartu...</span>
+                    <span id="flashcard-index">0 / 0</span>
+                </div>
+                
+                <!-- Circular/Linear Progress Bar -->
+                <div class="w-full bg-themeBorder/30 h-1.5 rounded-full overflow-hidden">
+                    <div id="flashcard-progress-bar" class="bg-themeAccent h-full transition-all duration-300" style="width: 0%"></div>
+                </div>
+
+                <!-- 3D Flashcard -->
+                <div class="w-full max-w-md h-80 flashcard-perspective cursor-pointer select-none" onclick="flipFlashcard()">
+                    <div id="flashcard-inner" class="flashcard-inner w-full h-full relative border border-themeBorder rounded-2xl shadow-lg">
+                        <!-- Front (Question) -->
+                        <div class="flashcard-front absolute inset-0 bg-themeCard p-8 rounded-2xl flex flex-col justify-between items-center text-center">
+                            <div class="w-full flex justify-between items-center">
+                                <span class="text-xs font-bold uppercase tracking-wider text-themeMuted">Pertanyaan</span>
+                                <span id="flashcard-front-tag" class="exam-marker marker-pg">PG 1</span>
+                            </div>
+                            <div id="flashcard-question-text" class="font-serif text-xl sm:text-2xl text-themeText font-semibold my-auto leading-relaxed">
+                                Pengertian limbah secara umum.
+                            </div>
+                            <div class="text-xs text-themeMuted flex items-center gap-1.5">
+                                <i class="fa-solid fa-repeat"></i> Klik untuk balik kartu
+                            </div>
+                        </div>
+
+                        <!-- Back (Answer/Module excerpt) -->
+                        <div class="flashcard-back absolute inset-0 bg-themeBg border border-themeBorder/80 p-8 rounded-2xl flex flex-col justify-between">
+                            <div class="w-full flex justify-between items-center">
+                                <span class="text-xs font-bold uppercase tracking-wider text-themeAccent">Penjelasan Modul</span>
+                                <span id="flashcard-back-tag" class="exam-marker marker-pg">PG 1</span>
+                            </div>
+                            <div id="flashcard-answer-text" class="materi-text text-sm sm:text-base text-themeText overflow-y-auto grow my-4 pr-1 leading-relaxed">
+                                Rangkuman jawaban akan muncul di sini.
+                            </div>
+                            <div class="text-xs text-center text-themeMuted">
+                                <i class="fa-solid fa-repeat"></i> Klik untuk balik kartu
                             </div>
                         </div>
                     </div>
+                </div>
 
+                <!-- Control Buttons -->
+                <div class="flex gap-4 w-full max-w-md justify-between mt-2">
+                    <button onclick="prevFlashcard()" class="bg-themeCard hover:bg-themeCardHover border border-themeBorder px-5 py-2.5 rounded-xl text-themeText text-sm font-semibold flex items-center gap-2 transition-all">
+                        <i class="fa-solid fa-arrow-left"></i> Sebelumnya
+                    </button>
+                    <div class="flex gap-2">
+                        <button onclick="markFlashcardStatus(false)" id="btn-fc-review" class="bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 px-4 py-2.5 rounded-xl text-rose-400 text-sm font-semibold flex items-center gap-1.5 transition-all" title="Saya belum lancar materi ini">
+                            <i class="fa-solid fa-xmark"></i> Belum Lancar
+                        </button>
+                        <button onclick="markFlashcardStatus(true)" id="btn-fc-mastered" class="bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 px-4 py-2.5 rounded-xl text-emerald-400 text-sm font-semibold flex items-center gap-1.5 transition-all" title="Saya sudah paham materi ini">
+                            <i class="fa-solid fa-check"></i> Sudah Paham
+                        </button>
+                    </div>
+                    <button onclick="nextFlashcard()" class="bg-themeCard hover:bg-themeCardHover border border-themeBorder px-5 py-2.5 rounded-xl text-themeText text-sm font-semibold flex items-center gap-2 transition-all">
+                        Berikutnya <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Quick Selection Deck -->
+                <div class="w-full max-w-md mt-6 pt-6 border-t border-themeBorder/40">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-themeMuted mb-2">Pilih Kumpulan Soal:</label>
+                    <select id="flashcard-deck-select" onchange="loadFlashcardDeck(this.value)" class="w-full px-3 py-2 text-sm bg-themeCard border border-themeBorder rounded-lg focus:outline-none focus:ring-2 focus:ring-themeAccent text-themeText">
+                        <option value="all">Semua Soal (45 Kartu)</option>
+                        <option value="bab1">Bab 1: Limbah & Bangun Ruang (11 Kartu)</option>
+                        <option value="bab2">Bab 2: Usaha & Perizinan (15 Kartu)</option>
+                        <option value="bab3">Bab 3: Produksi Kerajinan (6 Kartu)</option>
+                        <option value="bab45">Bab 4-5: Kemasan & Promosi (13 Kartu)</option>
+                        <option value="review">Kartu Belum Lancar (Tandai di atas)</option>
+                    </select>
                 </div>
             </div>
         </div>
 
     </main>
 
+    <!-- FOCUS MODE SETTINGS PANEL (Hanya muncul saat Mode Fokus aktif) -->
+    <div id="focus-settings-panel" class="hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-themeCard/95 backdrop-blur-md border border-themeBorder px-6 py-3 rounded-2xl shadow-2xl z-50 flex items-center gap-6 transition-all duration-300">
+        <div class="flex items-center gap-2">
+            <span class="text-xs font-bold text-themeMuted uppercase tracking-wider">Latar:</span>
+            <button onclick="setTheme('light')" class="w-6 h-6 rounded-full bg-white border border-gray-300 shadow-sm" title="Light Mode"></button>
+            <button onclick="setTheme('dark')" class="w-6 h-6 rounded-full bg-slate-900 border border-slate-700 shadow-sm" title="Dark Mode"></button>
+            <button onclick="setTheme('sepia')" class="w-6 h-6 rounded-full bg-[#F4EFE6] border border-[#E4DAC4] shadow-sm" title="Sepia Mode"></button>
+        </div>
+        <div class="h-6 w-px bg-themeBorder/40"></div>
+        <div class="flex items-center gap-2">
+            <span class="text-xs font-bold text-themeMuted uppercase tracking-wider">Ukuran Teks:</span>
+            <button onclick="setFontSize('sm')" class="text-xs font-semibold px-2 py-1 rounded hover:bg-themeCardHover text-themeText" title="Teks Kecil">A-</button>
+            <button onclick="setFontSize('md')" class="text-sm font-semibold px-2 py-1 rounded bg-themeBg border border-themeBorder text-themeText" title="Teks Normal">A</button>
+            <button onclick="setFontSize('lg')" class="text-base font-semibold px-2 py-1 rounded hover:bg-themeCardHover text-themeText" title="Teks Besar">A+</button>
+            <button onclick="setFontSize('xl')" class="text-lg font-semibold px-2 py-1 rounded hover:bg-themeCardHover text-themeText" title="Teks Sangat Besar">A++</button>
+        </div>
+        <div class="h-6 w-px bg-themeBorder/40"></div>
+        <button onclick="toggleFocusMode()" class="bg-themeAccent hover:bg-themeAccentHover text-white px-4 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all">
+            <i class="fa-solid fa-compress"></i> Keluar Fokus
+        </button>
+    </div>
+
+    <!-- BOTTOM NAVIGATION BAR (Mobile Only) -->
+    <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-themeCard/95 backdrop-blur-md border-t border-themeBorder py-2.5 px-6 flex justify-around items-center z-40 shadow-lg transition-colors duration-300 non-focus-element">
+        <button onclick="switchTab('prioritas')" class="mobile-tab-btn flex flex-col items-center gap-1 text-themeAccent font-semibold transition-all">
+            <i class="fa-solid fa-list-check text-base"></i>
+            <span class="text-[10px] uppercase font-bold tracking-wider">Kisi-Kisi</span>
+        </button>
+        <button onclick="switchTab('materi')" class="mobile-tab-btn flex flex-col items-center gap-1 text-themeMuted transition-all">
+            <i class="fa-solid fa-align-left text-base"></i>
+            <span class="text-[10px] uppercase font-bold tracking-wider">Materi</span>
+        </button>
+        <button onclick="switchTab('flashcard')" class="mobile-tab-btn flex flex-col items-center gap-1 text-themeMuted transition-all">
+            <i class="fa-solid fa-copy text-base"></i>
+            <span class="text-[10px] uppercase font-bold tracking-wider">Flashcards</span>
+        </button>
+    </nav>
+
     <script>
+        // Global Application State
+        let progressState = {};
+        let currentFilter = 'all';
+        let flashcardState = {
+            deck: 'all',
+            list: [],
+            currentIndex: 0,
+            reviewList: []
+        };
+        window.flashcardsData = [];
+
+        // Initialize App on DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            initProgress();
+            initEventListeners();
+            
+            // Wait slightly for DOM to settle, then initialize Flashcards
+            setTimeout(() => {
+                initFlashcards();
+            }, 100);
+        });
+
+        // --- THEME & FONT MANAGEMENT ---
+        function initTheme() {
+            const savedTheme = localStorage.getItem('pkwu_theme') || 'dark';
+            setTheme(savedTheme);
+            const savedSize = localStorage.getItem('pkwu_font_size') || 'md';
+            setFontSize(savedSize);
+        }
+
+        function setTheme(themeName) {
+            const body = document.body;
+            body.classList.remove('theme-light', 'theme-dark', 'theme-sepia');
+            body.classList.add('theme-' + themeName);
+            localStorage.setItem('pkwu_theme', themeName);
+
+            // Update theme toggle buttons active state
+            document.querySelectorAll('[id^="theme-btn-"]').forEach(btn => {
+                btn.classList.remove('text-themeAccent', 'bg-themeCard');
+                btn.classList.add('text-themeMuted');
+            });
+            const activeBtn = document.getElementById('theme-btn-' + themeName);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-themeMuted');
+                activeBtn.classList.add('text-themeAccent', 'bg-themeCard');
+            }
+        }
+
+        function setFontSize(size) {
+            const body = document.body;
+            body.classList.remove('font-size-sm', 'font-size-md', 'font-size-lg', 'font-size-xl');
+            body.classList.add('font-size-' + size);
+            localStorage.setItem('pkwu_font_size', size);
+
+            // Update font size settings button states in Focus panel
+            const panel = document.getElementById('focus-settings-panel');
+            if (panel) {
+                panel.querySelectorAll('button').forEach(btn => {
+                    if (btn.textContent.trim() === 'A-' && size === 'sm') setActiveFontSizeBtn(btn);
+                    else if (btn.textContent.trim() === 'A' && size === 'md') setActiveFontSizeBtn(btn);
+                    else if (btn.textContent.trim() === 'A+' && size === 'lg') setActiveFontSizeBtn(btn);
+                    else if (btn.textContent.trim() === 'A++' && size === 'xl') setActiveFontSizeBtn(btn);
+                    else if (btn.textContent.includes('Keluar') || btn.classList.contains('bg-white') || btn.classList.contains('bg-slate-900') || btn.classList.contains('bg-[#F4EFE6]')) {
+                        // ignore theme/exit buttons
+                    } else {
+                        btn.className = "text-sm font-semibold px-2 py-1 rounded hover:bg-themeCardHover text-themeText";
+                    }
+                });
+            }
+        }
+
+        function setActiveFontSizeBtn(activeBtn) {
+            activeBtn.className = "text-sm font-semibold px-2 py-1 rounded bg-themeBg border border-themeBorder text-themeText";
+        }
+
+        function toggleFocusMode() {
+            const body = document.body;
+            const isFocus = body.classList.toggle('focus-mode-active');
+            const focusBtn = document.querySelector('button[onclick="toggleFocusMode()"]');
+            const settingsPanel = document.getElementById('focus-settings-panel');
+
+            if (isFocus) {
+                if (focusBtn) focusBtn.innerHTML = '<i class="fa-solid fa-compress text-themeAccent"></i> <span class="font-medium">Keluar Fokus</span>';
+                if (settingsPanel) settingsPanel.classList.remove('hidden');
+                // Automatically switch to materials tab in Focus mode
+                switchTab('materi');
+            } else {
+                if (focusBtn) focusBtn.innerHTML = '<i class="fa-solid fa-expand text-themeAccent"></i> <span class="font-medium">Mode Fokus</span>';
+                if (settingsPanel) settingsPanel.classList.add('hidden');
+            }
+        }
+
+        // --- PROGRESS TRACKER LOGIC ---
+        function initProgress() {
+            const savedProgress = localStorage.getItem('pkwu_progress_state');
+            if (savedProgress) {
+                progressState = JSON.parse(savedProgress);
+            }
+
+            // Sync checkboxes in Prioritas tab with progressState
+            document.querySelectorAll('li[data-qid]').forEach(li => {
+                const qid = li.getAttribute('data-qid');
+                const checkbox = document.getElementById('chk-' + qid);
+                if (checkbox) {
+                    const isChecked = progressState[qid] || false;
+                    checkbox.checked = isChecked;
+                    if (isChecked) {
+                        li.classList.add('bg-emerald-500/5', 'border-emerald-500/20');
+                    }
+                }
+            });
+
+            // Sync reviewList for flashcards
+            const savedReviews = localStorage.getItem('pkwu_fc_review_state');
+            if (savedReviews) {
+                flashcardState.reviewList = JSON.parse(savedReviews);
+            }
+
+            updateProgressUI();
+        }
+
+        function toggleQuestion(qid) {
+            const checkbox = document.getElementById('chk-' + qid);
+            if (!checkbox) return;
+
+            // Handle wrapper click vs checkbox click
+            const target = window.event ? window.event.target : null;
+            if (target && target.tagName === 'INPUT') {
+                // Checkbox handles itself
+            } else {
+                checkbox.checked = !checkbox.checked;
+            }
+
+            progressState[qid] = checkbox.checked;
+            localStorage.setItem('pkwu_progress_state', JSON.stringify(progressState));
+
+            // Visual row highlight
+            const li = document.querySelector(`li[data-qid="${qid}"]`);
+            if (li) {
+                if (checkbox.checked) {
+                    li.classList.add('bg-emerald-500/5', 'border-emerald-500/20');
+                } else {
+                    li.classList.remove('bg-emerald-500/5', 'border-emerald-500/20');
+                }
+            }
+
+            // Sync with flashcard review list
+            if (checkbox.checked) {
+                flashcardState.reviewList = flashcardState.reviewList.filter(id => id !== qid);
+                localStorage.setItem('pkwu_fc_review_state', JSON.stringify(flashcardState.reviewList));
+            }
+
+            updateProgressUI();
+            
+            // Update filter items if active
+            if (currentFilter !== 'all') {
+                setFilter(currentFilter);
+            }
+        }
+
+        function updateProgressUI() {
+            const total = 45;
+            let checkedCount = 0;
+            
+            document.querySelectorAll('li[data-qid]').forEach(li => {
+                const qid = li.getAttribute('data-qid');
+                if (progressState[qid]) checkedCount++;
+            });
+
+            const percent = Math.round((checkedCount / total) * 100);
+
+            // Update counts in UI
+            document.querySelectorAll('#progress-text-count, #progress-text-count-mob').forEach(el => {
+                el.textContent = `${checkedCount}/${total}`;
+            });
+            document.querySelectorAll('#progress-percent, #progress-percent-mob').forEach(el => {
+                el.textContent = `${percent}%`;
+            });
+            document.querySelectorAll('#progress-bar, #progress-bar-mob').forEach(el => {
+                el.style.width = `${percent}%`;
+            });
+
+            // Update badge totals
+            const countDone = document.getElementById('count-done');
+            if (countDone) countDone.textContent = checkedCount;
+
+            const countPending = document.getElementById('count-pending');
+            if (countPending) countPending.textContent = total - checkedCount;
+        }
+
+        function setFilter(filterType) {
+            currentFilter = filterType;
+
+            // Update filter buttons styling (Desktop)
+            document.querySelectorAll('.btn-filter').forEach(btn => {
+                btn.className = "btn-filter px-4 py-2 text-left text-sm font-medium rounded-lg bg-themeBg border border-themeBorder text-themeMuted hover:bg-themeCardHover transition-all flex items-center justify-between";
+            });
+            const activeBtn = document.getElementById('filter-btn-' + filterType);
+            if (activeBtn) {
+                activeBtn.className = "btn-filter px-4 py-2 text-left text-sm font-medium rounded-lg bg-themeAccent text-white shadow-sm transition-all flex items-center justify-between";
+            }
+
+            // Update filter buttons styling (Mobile)
+            document.querySelectorAll('[id^="filter-btn-"][id$="-mob"]').forEach(btn => {
+                btn.className = "btn-filter px-3 py-1.5 text-xs font-semibold rounded-lg bg-themeBg border border-themeBorder text-themeMuted transition-all grow";
+            });
+            const activeBtnMob = document.getElementById('filter-btn-' + filterType + '-mob');
+            if (activeBtnMob) {
+                activeBtnMob.className = "btn-filter px-3 py-1.5 text-xs font-semibold rounded-lg bg-themeAccent text-white shadow-sm transition-all grow";
+            }
+
+            // Apply filter to checklist items
+            document.querySelectorAll('li[data-qid]').forEach(li => {
+                const qid = li.getAttribute('data-qid');
+                const isChecked = progressState[qid] || false;
+
+                let visible = true;
+                if (filterType === 'pending' && isChecked) visible = false;
+                if (filterType === 'done' && !isChecked) visible = false;
+
+                if (visible) {
+                    li.classList.remove('hidden');
+                } else {
+                    li.classList.add('hidden');
+                }
+            });
+
+            // Hide Bab cards that have 0 visible items
+            document.querySelectorAll('#tab-prioritas .bg-themeCard').forEach(card => {
+                const listItems = card.querySelectorAll('li[data-qid]');
+                let visibleCount = 0;
+                listItems.forEach(li => {
+                    if (!li.classList.contains('hidden')) visibleCount++;
+                });
+
+                if (visibleCount === 0) {
+                    card.classList.add('hidden');
+                } else {
+                    card.classList.remove('hidden');
+                }
+            });
+        }
+
+        // --- NAVIGATION & MAPPING LOGIC ---
         function switchTab(tabId) {
-            // Reset tab styling
+            // Reset tab styling (Desktop top tabs)
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
-                btn.classList.replace('text-primary', 'text-inkMuted');
+                btn.classList.replace('text-themeAccent', 'text-themeMuted');
             });
             
-            // Activate clicked tab
+            // Reset mobile bottom nav tab styling
+            document.querySelectorAll('.mobile-tab-btn').forEach(btn => {
+                btn.classList.remove('text-themeAccent', 'font-semibold');
+                btn.classList.add('text-themeMuted');
+            });
+
+            // Activate clicked top tab
             const clickedBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(tabId));
-            if(clickedBtn) {
+            if (clickedBtn) {
                 clickedBtn.classList.add('active');
-                clickedBtn.classList.replace('text-inkMuted', 'text-primary');
+                clickedBtn.classList.replace('text-themeMuted', 'text-themeAccent');
+            }
+
+            // Activate clicked mobile bottom nav tab
+            const clickedMobBtn = Array.from(document.querySelectorAll('.mobile-tab-btn')).find(btn => btn.getAttribute('onclick').includes(tabId));
+            if (clickedMobBtn) {
+                clickedMobBtn.classList.remove('text-themeMuted');
+                clickedMobBtn.classList.add('text-themeAccent', 'font-semibold');
             }
 
             // Hide all content, show selected
             document.getElementById('tab-prioritas').classList.add('hidden');
             document.getElementById('tab-materi').classList.add('hidden');
+            document.getElementById('tab-flashcard').classList.add('hidden');
             
             document.getElementById('tab-' + tabId).classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Trigger deck loading if switching to flashcards
+            if (tabId === 'flashcard' && window.flashcardsData.length > 0) {
+                loadFlashcardDeck(flashcardState.deck);
+            }
         }
 
         function toggleAccordion(button) {
@@ -1068,6 +2086,344 @@
                     item.classList.add('active');
                 } else {
                     item.classList.remove('active');
+                }
+            });
+        }
+
+        function findMateriBlock(qid) {
+            // qid is format like "pg-4" or "esai-41" or "pg-11-19"
+            // we parse type (PG or ESAI) and numbers
+            const cleanQid = qid.replace('chk-', '');
+            const parts = cleanQid.split('-');
+            const type = parts[0].toUpperCase(); // 'PG' or 'ESAI'
+            
+            const numbers = parts.slice(1);
+
+            const blocks = document.querySelectorAll('#tab-materi .highlight-block, #tab-materi .highlight-block-esai');
+            for (let block of blocks) {
+                const markers = block.querySelectorAll('.exam-marker');
+                for (let marker of markers) {
+                    const text = (marker.textContent || '').toUpperCase();
+                    // check if marker text contains the type (e.g. PG or ESAI)
+                    if (text.includes(type)) {
+                        // check if it matches any of the numbers
+                        for (let num of numbers) {
+                            // Match literal numbers separated by commas or spaces
+                            // E.g. "Soal PG No. 11, 12, 14, 19"
+                            const regex = new RegExp('\\b' + num + '\\b');
+                            if (regex.test(text)) {
+                                return block;
+                            }
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        function scrollToQuestion(qid) {
+            const block = findMateriBlock(qid);
+            if (!block) {
+                alert('Materi penjelas tidak ditemukan di modul.');
+                return;
+            }
+
+            // 1. Switch tab
+            switchTab('materi');
+
+            // 2. Open accordion containing the block
+            const accordionItem = block.closest('.accordion-item');
+            if (accordionItem) {
+                accordionItem.classList.add('active');
+            }
+
+            // 3. Scroll to target block
+            setTimeout(() => {
+                block.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // 4. Trigger visual flash animation
+                block.classList.add('flash-target');
+                setTimeout(() => {
+                    block.classList.remove('flash-target');
+                }, 3000);
+            }, 300);
+        }
+
+        // --- SEARCH ENGINE LOGIC ---
+        function handleSearch(query) {
+            const cleanQuery = query.trim().toLowerCase();
+
+            // 1. Search in Prioritas checklist tab
+            document.querySelectorAll('li[data-qid]').forEach(li => {
+                const qText = li.querySelector('.q-text').textContent.toLowerCase();
+                const qMarker = li.querySelector('.exam-marker').textContent.toLowerCase();
+                const qid = li.getAttribute('data-qid').toLowerCase();
+
+                const isMatched = qText.includes(cleanQuery) || qMarker.includes(cleanQuery) || qid.includes(cleanQuery);
+                
+                // Keep filter in mind
+                const isChecked = progressState[li.getAttribute('data-qid')] || false;
+                let visible = isMatched;
+                if (currentFilter === 'pending' && isChecked) visible = false;
+                if (currentFilter === 'done' && !isChecked) visible = false;
+
+                if (visible) {
+                    li.classList.remove('hidden');
+                } else {
+                    li.classList.add('hidden');
+                }
+            });
+
+            // Adjust Bab cards visibility based on search matches
+            document.querySelectorAll('#tab-prioritas .bg-themeCard').forEach(card => {
+                const listItems = card.querySelectorAll('li[data-qid]');
+                let visibleCount = 0;
+                listItems.forEach(li => {
+                    if (!li.classList.contains('hidden')) visibleCount++;
+                });
+
+                if (visibleCount === 0) {
+                    card.classList.add('hidden');
+                } else {
+                    card.classList.remove('hidden');
+                }
+            });
+
+            // 2. Search in Materi modul tab
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                const textContent = item.querySelector('.materi-text').textContent.toLowerCase();
+                const titleText = item.querySelector('h3').textContent.toLowerCase();
+
+                const isMatched = textContent.includes(cleanQuery) || titleText.includes(cleanQuery);
+
+                if (isMatched || cleanQuery === '') {
+                    item.classList.remove('hidden');
+                    if (cleanQuery !== '') {
+                        item.classList.add('active'); // Expand match
+                    } else {
+                        // Collapse all except Bab 1 on empty search
+                        if (!item.querySelector('h3').textContent.includes('Bab 1')) {
+                            item.classList.remove('active');
+                        }
+                    }
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+
+        // --- FLASHCARDS LOGIC ---
+        function initFlashcards() {
+            window.flashcardsData = [];
+            
+            // Loop through prioritas list items to compile card data
+            document.querySelectorAll('li[data-qid]').forEach(li => {
+                const qid = li.getAttribute('data-qid');
+                const tag = li.querySelector('.exam-marker').textContent.trim();
+                const question = li.querySelector('.q-text').textContent.trim();
+                
+                const block = findMateriBlock(qid);
+                let answer = 'Penjelasan detail tidak ditemukan.';
+                if (block) {
+                    // Clone block and remove marker to make answer clean
+                    const cloned = block.cloneNode(true);
+                    const marker = cloned.querySelector('.exam-marker');
+                    if (marker) marker.remove();
+                    answer = cloned.innerHTML;
+                }
+
+                // Determine Bab category
+                const cardTitle = li.closest('.bg-themeCard').querySelector('h3').textContent;
+                let babCategory = 'bab1';
+                if (cardTitle.includes('Bab 2')) babCategory = 'bab2';
+                else if (cardTitle.includes('Bab 3')) babCategory = 'bab3';
+                else if (cardTitle.includes('Bab 4') || cardTitle.includes('Bab 5')) babCategory = 'bab45';
+
+                window.flashcardsData.push({ qid, tag, question, answer, bab: babCategory });
+            });
+
+            loadFlashcardDeck('all');
+        }
+
+        function loadFlashcardDeck(deckType) {
+            flashcardState.deck = deckType;
+            let filtered = [];
+
+            if (deckType === 'all') {
+                filtered = [...window.flashcardsData];
+            } else if (deckType === 'review') {
+                filtered = window.flashcardsData.filter(card => flashcardState.reviewList.includes(card.qid));
+            } else {
+                filtered = window.flashcardsData.filter(card => card.bab === deckType);
+            }
+
+            flashcardState.list = filtered;
+            flashcardState.currentIndex = 0;
+            
+            // Update UI deck name
+            const names = {
+                all: 'Semua Soal (45 Kartu)',
+                bab1: 'Bab 1: Limbah & Bangun Ruang',
+                bab2: 'Bab 2: Usaha & Perizinan',
+                bab3: 'Bab 3: Produksi Kerajinan',
+                bab45: 'Bab 4-5: Kemasan & Promosi',
+                review: 'Kartu Belum Lancar'
+            };
+            document.getElementById('flashcard-deck-name').textContent = names[deckType] || 'Kumpulan Kartu';
+
+            // Reset Card Flip state
+            const cardInner = document.getElementById('flashcard-inner');
+            if (cardInner) cardInner.classList.remove('flipped');
+
+            renderFlashcard();
+        }
+
+        function renderFlashcard() {
+            const list = flashcardState.list;
+            const index = flashcardState.currentIndex;
+
+            const indexEl = document.getElementById('flashcard-index');
+            const progressEl = document.getElementById('flashcard-progress-bar');
+            
+            if (list.length === 0) {
+                document.getElementById('flashcard-question-text').textContent = 'Tidak ada kartu di kumpulan ini.';
+                document.getElementById('flashcard-answer-text').innerHTML = '<p class="text-themeMuted text-center mt-8">Tandai beberapa kartu sebagai "Belum Lancar" di deck lain, lalu buka deck ini kembali untuk belajar fokus.</p>';
+                document.getElementById('flashcard-front-tag').style.display = 'none';
+                document.getElementById('flashcard-back-tag').style.display = 'none';
+                indexEl.textContent = '0 / 0';
+                progressEl.style.width = '0%';
+                updateFlashcardButtons(null);
+                return;
+            }
+
+            document.getElementById('flashcard-front-tag').style.display = 'inline-flex';
+            document.getElementById('flashcard-back-tag').style.display = 'inline-flex';
+
+            const card = list[index];
+
+            // Render text
+            document.getElementById('flashcard-question-text').textContent = card.question;
+            document.getElementById('flashcard-answer-text').innerHTML = card.answer;
+            
+            document.getElementById('flashcard-front-tag').textContent = card.tag;
+            document.getElementById('flashcard-back-tag').textContent = card.tag;
+
+            // Render indexes
+            indexEl.textContent = `${index + 1} / ${list.length}`;
+            progressEl.style.width = `${((index + 1) / list.length) * 100}%`;
+
+            updateFlashcardButtons(card.qid);
+        }
+
+        function flipFlashcard() {
+            const cardInner = document.getElementById('flashcard-inner');
+            if (cardInner) cardInner.classList.toggle('flipped');
+        }
+
+        function prevFlashcard() {
+            if (flashcardState.list.length === 0) return;
+            
+            const cardInner = document.getElementById('flashcard-inner');
+            const wasFlipped = cardInner.classList.contains('flipped');
+            cardInner.classList.remove('flipped');
+
+            setTimeout(() => {
+                flashcardState.currentIndex = (flashcardState.currentIndex - 1 + flashcardState.list.length) % flashcardState.list.length;
+                renderFlashcard();
+            }, wasFlipped ? 200 : 0);
+        }
+
+        function nextFlashcard() {
+            if (flashcardState.list.length === 0) return;
+
+            const cardInner = document.getElementById('flashcard-inner');
+            const wasFlipped = cardInner.classList.contains('flipped');
+            cardInner.classList.remove('flipped');
+
+            setTimeout(() => {
+                flashcardState.currentIndex = (flashcardState.currentIndex + 1) % flashcardState.list.length;
+                renderFlashcard();
+            }, wasFlipped ? 200 : 0);
+        }
+
+        function markFlashcardStatus(isMastered) {
+            if (flashcardState.list.length === 0) return;
+            const currentCard = flashcardState.list[flashcardState.currentIndex];
+            const qid = currentCard.qid;
+
+            if (isMastered) {
+                // 1. Mark as mastered in progressState
+                progressState[qid] = true;
+                localStorage.setItem('pkwu_progress_state', JSON.stringify(progressState));
+
+                // 2. Sync prioritas UI
+                const checkbox = document.getElementById('chk-' + qid);
+                if (checkbox) checkbox.checked = true;
+                const li = document.querySelector(`li[data-qid="${qid}"]`);
+                if (li) li.classList.add('bg-emerald-500/5', 'border-emerald-500/20');
+                
+                updateProgressUI();
+
+                // 3. Remove from review list
+                flashcardState.reviewList = flashcardState.reviewList.filter(id => id !== qid);
+                localStorage.setItem('pkwu_fc_review_state', JSON.stringify(flashcardState.reviewList));
+            } else {
+                // 1. Add to review list
+                if (!flashcardState.reviewList.includes(qid)) {
+                    flashcardState.reviewList.push(qid);
+                }
+                localStorage.setItem('pkwu_fc_review_state', JSON.stringify(flashcardState.reviewList));
+
+                // 2. Mark as un-mastered in progress
+                progressState[qid] = false;
+                localStorage.setItem('pkwu_progress_state', JSON.stringify(progressState));
+
+                // 3. Sync prioritas UI
+                const checkbox = document.getElementById('chk-' + qid);
+                if (checkbox) checkbox.checked = false;
+                const li = document.querySelector(`li[data-qid="${qid}"]`);
+                if (li) li.classList.remove('bg-emerald-500/5', 'border-emerald-500/20');
+                
+                updateProgressUI();
+            }
+
+            updateFlashcardButtons(qid);
+
+            // Auto-advance to next card after a brief delay
+            setTimeout(() => {
+                nextFlashcard();
+            }, 600);
+        }
+
+        function updateFlashcardButtons(qid) {
+            const btnReview = document.getElementById('btn-fc-review');
+            const btnMastered = document.getElementById('btn-fc-mastered');
+
+            if (!qid) {
+                if (btnReview) btnReview.className = "hidden";
+                if (btnMastered) btnMastered.className = "hidden";
+                return;
+            }
+
+            btnReview.className = "bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 px-4 py-2.5 rounded-xl text-rose-400 text-sm font-semibold flex items-center gap-1.5 transition-all";
+            btnMastered.className = "bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 px-4 py-2.5 rounded-xl text-emerald-400 text-sm font-semibold flex items-center gap-1.5 transition-all";
+
+            const isReviewed = flashcardState.reviewList.includes(qid);
+            const isMastered = progressState[qid] || false;
+
+            if (isReviewed) {
+                btnReview.className = "bg-rose-500 border border-rose-600 px-4 py-2.5 rounded-xl text-white text-sm font-semibold flex items-center gap-1.5 transition-all";
+            }
+            if (isMastered) {
+                btnMastered.className = "bg-emerald-500 border border-emerald-600 px-4 py-2.5 rounded-xl text-white text-sm font-semibold flex items-center gap-1.5 transition-all";
+            }
+        }
+
+        function initEventListeners() {
+            // Add Esc key listener to exit Focus mode
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && document.body.classList.contains('focus-mode-active')) {
+                    toggleFocusMode();
                 }
             });
         }
