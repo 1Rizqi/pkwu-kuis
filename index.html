@@ -157,10 +157,11 @@
             display: grid;
             grid-template-rows: 0fr;
             transition: grid-template-rows 0.4s ease-out;
+            overflow: hidden;
         }
         
         .accordion-content > div {
-            overflow: hidden;
+            min-height: 0;
         }
 
         .accordion-item.active .accordion-content {
@@ -182,30 +183,46 @@
         }
         .materi-text h4 {
             font-family: 'Lora', serif;
-            font-size: 1.35rem;
+            font-size: 1.125rem;
             font-weight: 600;
             color: var(--text-main);
-            margin-top: 2rem;
-            margin-bottom: 0.75rem;
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
             border-bottom: 1px dashed var(--border-color);
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.35rem;
+        }
+        @media (min-width: 640px) {
+            .materi-text h4 {
+                font-size: 1.35rem;
+                margin-top: 2rem;
+                margin-bottom: 0.75rem;
+                padding-bottom: 0.5rem;
+            }
         }
         .materi-text li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .exam-marker {
             display: inline-flex;
             align-items: center;
             font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             font-weight: 700;
-            padding: 0.15rem 0.5rem;
-            border-radius: 0.25rem;
-            margin-right: 0.5rem;
-            transform: translateY(-2px);
+            padding: 0.1rem 0.35rem;
+            border-radius: 0.2rem;
+            margin-right: 0.35rem;
+            transform: translateY(-1px);
             box-shadow: 0 1px 2px rgba(0,0,0,0.1);
             letter-spacing: 0.025em;
+        }
+        @media (min-width: 640px) {
+            .exam-marker {
+                font-size: 0.75rem;
+                padding: 0.15rem 0.5rem;
+                margin-right: 0.5rem;
+                transform: translateY(-2px);
+            }
         }
         
         /* Modifikasi Stabilo & Garis Tepi Dinamis */
@@ -221,20 +238,27 @@
         }
 
         .highlight-block {
-            border-left: 4px solid #F59E0B; /* Amber-500 */
-            padding: 1rem 1.25rem;
-            margin: 1.5rem 0;
+            border-left: 3px solid #F59E0B; /* Amber-500 */
+            padding: 0.75rem 0.875rem;
+            margin: 1rem 0;
             border-radius: 0 0.5rem 0.5rem 0;
             background: linear-gradient(90deg, var(--bg-marker-pg) 0%, rgba(15,23,42,0) 100%);
             transition: all 0.3s ease;
         }
         .highlight-block-esai {
-            border-left: 4px solid #E11D48; /* Rose-600 */
-            padding: 1rem 1.25rem;
-            margin: 1.5rem 0;
+            border-left: 3px solid #E11D48; /* Rose-600 */
+            padding: 0.75rem 0.875rem;
+            margin: 1rem 0;
             border-radius: 0 0.5rem 0.5rem 0;
             background: linear-gradient(90deg, var(--bg-marker-esai) 0%, rgba(15,23,42,0) 100%);
             transition: all 0.3s ease;
+        }
+        @media (min-width: 640px) {
+            .highlight-block, .highlight-block-esai {
+                border-left-width: 4px;
+                padding: 1rem 1.25rem;
+                margin: 1.5rem 0;
+            }
         }
 
         /* Temporary flash effect when scrolling to target */
@@ -265,6 +289,14 @@
             background: var(--text-muted);
         }
 
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-none {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
         /* Flip card animation styles */
         .flashcard-perspective {
             perspective: 1000px;
@@ -288,10 +320,16 @@
         .accordion-item {
             background-color: var(--bg-card) !important;
             border-color: var(--border-color) !important;
+            transition: all 0.3s ease;
+        }
+        .accordion-item.active {
+            border-color: var(--accent-primary) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
         .accordion-item button {
             background-color: var(--bg-card) !important;
             color: var(--text-main) !important;
+            transition: all 0.2s ease;
         }
         .accordion-item button:hover {
             background-color: var(--bg-hover) !important;
@@ -302,17 +340,54 @@
         .accordion-content {
             border-color: var(--border-color) !important;
         }
-        .accordion-content > div {
+        .accordion-content .materi-text {
             border-color: var(--border-color) !important;
             background-color: var(--bg-card) !important;
         }
 
         @media (max-w: 1023px) {
             body {
-                padding-bottom: 70px; /* Space for mobile bottom nav */
+                padding-bottom: 56px; /* Space for mobile bottom nav */
             }
             body.focus-mode-active {
                 padding-bottom: 0px; /* No mobile bottom nav in focus mode */
+            }
+        }
+
+        @media (max-w: 639px) {
+            #tab-prioritas li[data-qid] {
+                font-size: 0.75rem !important;
+                padding-top: 0.25rem !important;
+                padding-bottom: 0.25rem !important;
+                padding-left: 0.375rem !important;
+                padding-right: 0.375rem !important;
+            }
+            #tab-prioritas li[data-qid] input[type="checkbox"] {
+                width: 0.875rem !important;
+                height: 0.875rem !important;
+            }
+            .accordion-item button {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+                padding-top: 0.75rem !important;
+                padding-bottom: 0.75rem !important;
+            }
+            .accordion-item button h3 {
+                font-size: 0.875rem !important;
+            }
+            .accordion-content .materi-text {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+                padding-bottom: 1rem !important;
+            }
+            #flashcard-question-text {
+                font-size: 1.125rem !important;
+            }
+            .flashcard-front, .flashcard-back {
+                padding: 1.25rem !important;
+            }
+            .flashcard-perspective {
+                height: 18rem !important;
             }
         }
 
@@ -332,41 +407,41 @@
 <body class="theme-dark flex flex-col min-h-screen bg-themeBg text-themeText font-size-md transition-colors duration-300">
 
     <header class="bg-themeCard/80 backdrop-blur-md border-b border-themeBorder sticky top-0 z-50 transition-colors duration-300">
-        <div class="max-w-4xl mx-auto px-6 py-4">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 py-2.5 sm:py-4">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2 sm:gap-4">
                 <div>
-                    <h1 class="font-serif text-2xl font-bold tracking-tight text-themeText">Materi PKWU Kelas XI</h1>
-                    <p class="text-sm text-themeMuted font-medium mt-1"><i class="fa-solid fa-book-open mr-1.5 text-themeAccent"></i>Persiapan Sumatif Akhir Semester Genap</p>
+                    <h1 class="font-serif text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-themeText">Materi PKWU Kelas XI</h1>
+                    <p class="text-xs sm:text-sm text-themeMuted font-medium mt-0.5 sm:mt-1"><i class="fa-solid fa-book-open mr-1.5 text-themeAccent"></i>Persiapan Sumatif Akhir Semester Genap</p>
                 </div>
-                <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
+                <div class="flex flex-wrap items-center gap-1.5 sm:gap-3 w-full md:w-auto">
                     <!-- Tema Switcher -->
-                    <div class="flex items-center bg-themeBg border border-themeBorder p-1 rounded-lg transition-colors">
-                        <button onclick="setTheme('light')" id="theme-btn-light" class="w-8 h-8 rounded-md flex items-center justify-center text-sm transition-all text-themeMuted hover:text-themeText" title="Mode Terang">
+                    <div class="flex items-center bg-themeBg border border-themeBorder p-0.5 sm:p-1 rounded-lg transition-colors">
+                        <button onclick="setTheme('light')" id="theme-btn-light" class="w-7 h-7 sm:w-8 sm:h-8 rounded-md flex items-center justify-center text-xs sm:text-sm transition-all text-themeMuted hover:text-themeText" title="Mode Terang">
                             <i class="fa-solid fa-sun"></i>
                         </button>
-                        <button onclick="setTheme('dark')" id="theme-btn-dark" class="w-8 h-8 rounded-md flex items-center justify-center text-sm transition-all text-themeMuted hover:text-themeText" title="Mode Gelap">
+                        <button onclick="setTheme('dark')" id="theme-btn-dark" class="w-7 h-7 sm:w-8 sm:h-8 rounded-md flex items-center justify-center text-xs sm:text-sm transition-all text-themeMuted hover:text-themeText" title="Mode Gelap">
                             <i class="fa-solid fa-moon"></i>
                         </button>
-                        <button onclick="setTheme('sepia')" id="theme-btn-sepia" class="w-8 h-8 rounded-md flex items-center justify-center text-sm transition-all text-themeMuted hover:text-themeText" title="Mode Sepia">
+                        <button onclick="setTheme('sepia')" id="theme-btn-sepia" class="w-7 h-7 sm:w-8 sm:h-8 rounded-md flex items-center justify-center text-xs sm:text-sm transition-all text-themeMuted hover:text-themeText" title="Mode Sepia">
                             <i class="fa-solid fa-coffee"></i>
                         </button>
                     </div>
 
                     <!-- Mode Fokus Button -->
-                    <button onclick="toggleFocusMode()" class="bg-themeBg hover:bg-themeCardHover border border-themeBorder px-3.5 py-1.5 rounded-lg flex items-center gap-2 text-sm text-themeText transition-all" title="Mode Fokus Baca (Tanpa Gangguan)">
+                    <button onclick="toggleFocusMode()" class="bg-themeBg hover:bg-themeCardHover border border-themeBorder px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-lg flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-themeText transition-all" title="Mode Fokus Baca (Tanpa Gangguan)">
                         <i class="fa-solid fa-expand text-themeAccent"></i>
                         <span class="font-medium">Mode Fokus</span>
                     </button>
 
                     <!-- Info Soal -->
-                    <div class="bg-themeBg px-3 py-1.5 rounded-md border border-themeBorder flex items-center gap-2 text-sm font-medium text-themeText">
-                        <i class="fa-regular fa-clock text-themeAccent"></i> 90 Menit | 45 Soal
+                    <div class="bg-themeBg px-2 sm:px-3 py-1 sm:py-1.5 rounded-md border border-themeBorder flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-themeText">
+                        <i class="fa-regular fa-clock text-themeAccent"></i> 90 Mnt | 45 Soal
                     </div>
                 </div>
             </div>
 
             <!-- Search and Tab Row -->
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-5 pt-3 border-t border-themeBorder/40">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mt-3 sm:mt-5 pt-2 sm:pt-3 border-t border-themeBorder/40">
                 <!-- Navigasi Tab -->
                 <nav class="hidden lg:flex space-x-6 border-b border-transparent">
                     <button onclick="switchTab('prioritas')" class="tab-btn active pb-2 text-themeMuted hover:text-themeAccent focus:outline-none flex items-center gap-2 text-sm sm:text-base">
@@ -391,33 +466,33 @@
         </div>
     </header>
 
-    <main class="flex-grow w-full py-8 px-4 sm:px-6">
+    <main class="flex-grow w-full pt-4 pb-20 sm:py-8 px-2 sm:px-6">
 
         <div id="tab-prioritas" class="max-w-6xl mx-auto animate-fade-in">
-            <div class="text-center mb-8">
-                <h2 class="font-serif text-3xl font-bold text-themeText mb-3">Peta Kisi-Kisi Ujian</h2>
-                <p class="text-themeMuted max-w-2xl mx-auto">Daftar ini adalah ringkasan indikator soal yang <strong>pasti keluar</strong>. Gunakan sebagai ceklis belajarmu. Penjelasan detailnya dapat dibaca di tab Materi Lengkap.</p>
+            <div class="text-center mb-6 sm:mb-8">
+                <h2 class="font-serif text-xl sm:text-2xl md:text-3xl font-bold text-themeText mb-2 sm:mb-3">Peta Kisi-Kisi Ujian</h2>
+                <p class="text-themeMuted text-xs sm:text-sm max-w-2xl mx-auto">Daftar ini adalah ringkasan indikator soal yang <strong>pasti keluar</strong>. Gunakan sebagai ceklis belajarmu. Penjelasan detailnya dapat dibaca di tab Materi Lengkap.</p>
             </div>
 
             <!-- Dashboard Ringkasan & Progress (Mobile) -->
-            <div class="lg:hidden w-full bg-themeCard p-5 rounded-xl border border-themeBorder shadow-sm mb-6 flex flex-col gap-4">
+            <div class="lg:hidden w-full bg-themeCard p-4 rounded-xl border border-themeBorder shadow-sm mb-4 flex flex-col gap-3">
                 <div>
-                    <h3 class="font-bold text-base text-themeText mb-1 flex items-center gap-2">
+                    <h3 class="font-bold text-sm sm:text-base text-themeText mb-1 flex items-center gap-1.5">
                         <i class="fa-solid fa-chart-line text-themeAccent"></i> Progress Belajar Kamu
                     </h3>
-                    <div class="flex justify-between text-xs text-themeMuted mb-2">
+                    <div class="flex justify-between text-[11px] sm:text-xs text-themeMuted mb-1.5">
                         <span>Paham: <strong id="progress-text-count-mob" class="text-themeText">0/45</strong></span>
                         <span id="progress-percent-mob" class="font-semibold text-themeAccent">0%</span>
                     </div>
-                    <div class="w-full bg-themeBg h-2 rounded-full overflow-hidden">
+                    <div class="w-full bg-themeBg h-1.5 rounded-full overflow-hidden">
                         <div id="progress-bar-mob" class="bg-themeAccent h-full rounded-full transition-all duration-500" style="width: 0%"></div>
                     </div>
                 </div>
                 <!-- Filter buttons -->
                 <div class="flex gap-2">
-                    <button onclick="setFilter('all')" id="filter-btn-all-mob" class="btn-filter px-3 py-1.5 text-xs font-semibold rounded-lg bg-themeAccent text-white shadow-sm transition-all grow">Semua</button>
-                    <button onclick="setFilter('pending')" id="filter-btn-pending-mob" class="btn-filter px-3 py-1.5 text-xs font-semibold rounded-lg bg-themeBg border border-themeBorder text-themeMuted transition-all grow">Sisa Soal</button>
-                    <button onclick="setFilter('done')" id="filter-btn-done-mob" class="btn-filter px-3 py-1.5 text-xs font-semibold rounded-lg bg-themeBg border border-themeBorder text-themeMuted transition-all grow">Paham</button>
+                    <button onclick="setFilter('all')" id="filter-btn-all-mob" class="btn-filter px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-themeAccent text-white shadow-sm transition-all grow">Semua</button>
+                    <button onclick="setFilter('pending')" id="filter-btn-pending-mob" class="btn-filter px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-themeBg border border-themeBorder text-themeMuted transition-all grow">Sisa Soal</button>
+                    <button onclick="setFilter('done')" id="filter-btn-done-mob" class="btn-filter px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-themeBg border border-themeBorder text-themeMuted transition-all grow">Paham</button>
                 </div>
             </div>
 
@@ -943,12 +1018,16 @@
                     
                     <!-- BAB 1 -->
                     <div class="accordion-item bg-white border border-gray-200 rounded-lg shadow-sm active">
-                        <button class="w-full px-6 py-4 flex justify-between items-center bg-white hover:bg-paperDark transition-colors rounded-t-lg focus:outline-none" onclick="toggleAccordion(this)">
-                            <h3 class="font-serif font-bold text-lg text-gray-900 text-left">Bab 1: Wirausaha Kerajinan dari Bahan Limbah Berbentuk Bangun Ruang</h3>
-                            <i class="fa-solid fa-chevron-down text-gray-400 chevron-icon transition-transform duration-300"></i>
+                        <button class="w-full px-5 py-4 flex justify-between items-center transition-all focus:outline-none" onclick="toggleAccordion(this)">
+                            <div class="flex items-center gap-3.5 pr-4">
+                                <span class="bg-themeAccent/10 text-themeAccent text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-md tracking-wider shrink-0">BAB 1</span>
+                                <span class="font-sans font-semibold text-sm sm:text-base text-themeText text-left leading-snug">Wirausaha Kerajinan dari Bahan Limbah Berbentuk Bangun Ruang</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-down text-themeMuted chevron-icon transition-transform duration-300 text-sm"></i>
                         </button>
                         <div class="accordion-content">
-                            <div class="px-6 pb-8 pt-2 materi-text border-t border-gray-100">
+                            <div>
+                                <div class="px-6 pb-8 pt-2 materi-text border-t border-gray-100">
                                 
                                 <h4 class="text-center font-bold text-2xl mb-6">Wirausaha Kerajinan dari Bahan Limbah Berbentuk Bangun Ruang</h4>
 
@@ -1060,15 +1139,20 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
                     <!-- BAB 2 -->
                     <div class="accordion-item bg-white border border-gray-200 rounded-lg shadow-sm">
-                        <button class="w-full px-6 py-4 flex justify-between items-center bg-white hover:bg-paperDark transition-colors rounded-t-lg focus:outline-none" onclick="toggleAccordion(this)">
-                            <h3 class="font-serif font-bold text-lg text-gray-900 text-left">Bab 2: Perencanaan Usaha Kerajinan dari Bahan Limbah</h3>
-                            <i class="fa-solid fa-chevron-down text-gray-400 chevron-icon transition-transform duration-300"></i>
+                        <button class="w-full px-5 py-4 flex justify-between items-center transition-all focus:outline-none" onclick="toggleAccordion(this)">
+                            <div class="flex items-center gap-3.5 pr-4">
+                                <span class="bg-themeAccent/10 text-themeAccent text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-md tracking-wider shrink-0">BAB 2</span>
+                                <span class="font-sans font-semibold text-sm sm:text-base text-themeText text-left leading-snug">Perencanaan Usaha Kerajinan dari Bahan Limbah</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-down text-themeMuted chevron-icon transition-transform duration-300 text-sm"></i>
                         </button>
                         <div class="accordion-content">
-                            <div class="px-6 pb-8 pt-2 materi-text border-t border-gray-100">
+                            <div>
+                                <div class="px-6 pb-8 pt-2 materi-text border-t border-gray-100">
                                 
                                 <h4>A. Perencanaan Usaha Kerajinan dari Bahan Limbah Berbentuk Bangun Ruang</h4>
                                 
@@ -1310,15 +1394,20 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
                     <!-- BAB 3 -->
                     <div class="accordion-item bg-white border border-gray-200 rounded-lg shadow-sm">
-                        <button class="w-full px-6 py-4 flex justify-between items-center bg-white hover:bg-paperDark transition-colors rounded-t-lg focus:outline-none" onclick="toggleAccordion(this)">
-                            <h3 class="font-serif font-bold text-lg text-gray-900 text-left">Bab 3: Sistem Produksi Usaha Kerajinan</h3>
-                            <i class="fa-solid fa-chevron-down text-gray-400 chevron-icon transition-transform duration-300"></i>
+                        <button class="w-full px-5 py-4 flex justify-between items-center transition-all focus:outline-none" onclick="toggleAccordion(this)">
+                            <div class="flex items-center gap-3.5 pr-4">
+                                <span class="bg-themeAccent/10 text-themeAccent text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-md tracking-wider shrink-0">BAB 3</span>
+                                <span class="font-sans font-semibold text-sm sm:text-base text-themeText text-left leading-snug">Sistem Produksi Usaha Kerajinan</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-down text-themeMuted chevron-icon transition-transform duration-300 text-sm"></i>
                         </button>
                         <div class="accordion-content">
-                            <div class="px-6 pb-8 pt-2 materi-text border-t border-gray-100">
+                            <div>
+                                <div class="px-6 pb-8 pt-2 materi-text border-t border-gray-100">
                                 
                                 <h4>B. Sistem Produksi Usaha Kerajinan dari Bahan Limbah Berbentuk Bangun Ruang</h4>
                                 
@@ -1462,15 +1551,20 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
                     <!-- BAB 4 -->
                     <div class="accordion-item bg-white border border-gray-200 rounded-lg shadow-sm">
-                        <button class="w-full px-6 py-4 flex justify-between items-center bg-white hover:bg-paperDark transition-colors rounded-t-lg focus:outline-none" onclick="toggleAccordion(this)">
-                            <h3 class="font-serif font-bold text-lg text-gray-900 text-left">Bab 4: Pengemasan Produk Kerajinan</h3>
-                            <i class="fa-solid fa-chevron-down text-gray-400 chevron-icon transition-transform duration-300"></i>
+                        <button class="w-full px-5 py-4 flex justify-between items-center transition-all focus:outline-none" onclick="toggleAccordion(this)">
+                            <div class="flex items-center gap-3.5 pr-4">
+                                <span class="bg-themeAccent/10 text-themeAccent text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-md tracking-wider shrink-0">BAB 4</span>
+                                <span class="font-sans font-semibold text-sm sm:text-base text-themeText text-left leading-snug">Pengemasan Produk Kerajinan</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-down text-themeMuted chevron-icon transition-transform duration-300 text-sm"></i>
                         </button>
                         <div class="accordion-content">
-                            <div class="px-6 pb-8 pt-2 materi-text border-t border-gray-100">
+                            <div>
+                                <div class="px-6 pb-8 pt-2 materi-text border-t border-gray-100">
                                 
                                 <h4>7. Pengemasan Produk Kerajinan dari Bahan Limbah Berbentuk Bangun Ruang</h4>
                                 <p><strong>1. Pengertian Pengemasan Produk Kerajinan</strong><br>
@@ -1559,15 +1653,20 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
                     <!-- BAB 5 -->
                     <div class="accordion-item bg-white border border-gray-200 rounded-lg shadow-sm">
-                        <button class="w-full px-6 py-4 flex justify-between items-center bg-white hover:bg-paperDark transition-colors rounded-t-lg focus:outline-none" onclick="toggleAccordion(this)">
-                            <h3 class="font-serif font-bold text-lg text-gray-900 text-left">Bab 5: Strategi Promosi Produk</h3>
-                            <i class="fa-solid fa-chevron-down text-gray-400 chevron-icon transition-transform duration-300"></i>
+                        <button class="w-full px-5 py-4 flex justify-between items-center transition-all focus:outline-none" onclick="toggleAccordion(this)">
+                            <div class="flex items-center gap-3.5 pr-4">
+                                <span class="bg-themeAccent/10 text-themeAccent text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-md tracking-wider shrink-0">BAB 5</span>
+                                <span class="font-sans font-semibold text-sm sm:text-base text-themeText text-left leading-snug">Strategi Promosi Produk</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-down text-themeMuted chevron-icon transition-transform duration-300 text-sm"></i>
                         </button>
                         <div class="accordion-content">
-                            <div class="px-6 pb-8 pt-2 materi-text border-t border-gray-100">
+                            <div>
+                                <div class="px-6 pb-8 pt-2 materi-text border-t border-gray-100">
                                 
                                 <h4>C. Strategi Promosi Produk Hasil Usaha Kerajinan dari Bahan Limbah Berbentuk Bangun Ruang</h4>
                                 
@@ -1656,6 +1755,7 @@
                                      E. Laporan Kegiatan Usaha Kerajinan dari Bahan Limbah Berbentuk Bangun Ruang (tidak diajarkan)</p>
                                  </div>
                              </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1667,6 +1767,19 @@
             <div class="text-center mb-8">
                 <h2 class="font-serif text-3xl font-bold text-themeText mb-3">Kartu Belajar (Flashcards)</h2>
                 <p class="text-themeMuted max-w-2xl mx-auto">Gunakan kartu ini untuk melatih ingatan Anda (*active recall*). Baca kisi-kisi di depan, coba tebak jawabannya, lalu klik kartu untuk melihat penjelasan detail dari modul.</p>
+            </div>
+
+            <!-- Quick Selection Deck Pills -->
+            <div class="w-full max-w-md mx-auto mb-6 px-4">
+                <label class="block text-xs font-bold uppercase tracking-wider text-themeMuted mb-2 text-center">Pilih Kumpulan Soal:</label>
+                <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-none justify-start sm:justify-center px-1">
+                    <button onclick="loadFlashcardDeck('all')" id="deck-btn-all" class="deck-btn shrink-0 px-3.5 py-1.5 text-xs font-semibold rounded-full border border-themeBorder bg-themeCard text-themeMuted hover:text-themeText transition-all">Semua Soal (45)</button>
+                    <button onclick="loadFlashcardDeck('bab1')" id="deck-btn-bab1" class="deck-btn shrink-0 px-3.5 py-1.5 text-xs font-semibold rounded-full border border-themeBorder bg-themeCard text-themeMuted hover:text-themeText transition-all">Bab 1 (11)</button>
+                    <button onclick="loadFlashcardDeck('bab2')" id="deck-btn-bab2" class="deck-btn shrink-0 px-3.5 py-1.5 text-xs font-semibold rounded-full border border-themeBorder bg-themeCard text-themeMuted hover:text-themeText transition-all">Bab 2 (15)</button>
+                    <button onclick="loadFlashcardDeck('bab3')" id="deck-btn-bab3" class="deck-btn shrink-0 px-3.5 py-1.5 text-xs font-semibold rounded-full border border-themeBorder bg-themeCard text-themeMuted hover:text-themeText transition-all">Bab 3 (6)</button>
+                    <button onclick="loadFlashcardDeck('bab45')" id="deck-btn-bab45" class="deck-btn shrink-0 px-3.5 py-1.5 text-xs font-semibold rounded-full border border-themeBorder bg-themeCard text-themeMuted hover:text-themeText transition-all">Bab 4-5 (13)</button>
+                    <button onclick="loadFlashcardDeck('review')" id="deck-btn-review" class="deck-btn shrink-0 px-3.5 py-1.5 text-xs font-semibold rounded-full border border-themeBorder bg-themeCard text-themeMuted hover:text-themeText transition-all">Belum Lancar</button>
+                </div>
             </div>
 
             <!-- Flashcard Deck Container -->
@@ -1716,34 +1829,19 @@
                 </div>
 
                 <!-- Control Buttons -->
-                <div class="flex gap-4 w-full max-w-md justify-between mt-2">
-                    <button onclick="prevFlashcard()" class="bg-themeCard hover:bg-themeCardHover border border-themeBorder px-5 py-2.5 rounded-xl text-themeText text-sm font-semibold flex items-center gap-2 transition-all">
+                <div class="grid grid-cols-2 sm:flex sm:flex-row gap-3 sm:gap-4 w-full max-w-md justify-between mt-2">
+                    <button onclick="prevFlashcard()" class="order-1 bg-themeCard hover:bg-themeCardHover border border-themeBorder px-4 py-2.5 rounded-xl text-themeText text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all">
                         <i class="fa-solid fa-arrow-left"></i> Sebelumnya
                     </button>
-                    <div class="flex gap-2">
-                        <button onclick="markFlashcardStatus(false)" id="btn-fc-review" class="bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 px-4 py-2.5 rounded-xl text-rose-400 text-sm font-semibold flex items-center gap-1.5 transition-all" title="Saya belum lancar materi ini">
-                            <i class="fa-solid fa-xmark"></i> Belum Lancar
-                        </button>
-                        <button onclick="markFlashcardStatus(true)" id="btn-fc-mastered" class="bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 px-4 py-2.5 rounded-xl text-emerald-400 text-sm font-semibold flex items-center gap-1.5 transition-all" title="Saya sudah paham materi ini">
-                            <i class="fa-solid fa-check"></i> Sudah Paham
-                        </button>
-                    </div>
-                    <button onclick="nextFlashcard()" class="bg-themeCard hover:bg-themeCardHover border border-themeBorder px-5 py-2.5 rounded-xl text-themeText text-sm font-semibold flex items-center gap-2 transition-all">
+                    <button onclick="markFlashcardStatus(false)" id="btn-fc-review" class="order-3 sm:order-2 col-span-1 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 px-3 py-2.5 rounded-xl text-rose-400 text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 transition-all" title="Saya belum lancar materi ini">
+                        <i class="fa-solid fa-xmark"></i> Belum Lancar
+                    </button>
+                    <button onclick="markFlashcardStatus(true)" id="btn-fc-mastered" class="order-4 sm:order-3 col-span-1 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 px-3 py-2.5 rounded-xl text-emerald-400 text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 transition-all" title="Saya sudah paham materi ini">
+                        <i class="fa-solid fa-check"></i> Sudah Paham
+                    </button>
+                    <button onclick="nextFlashcard()" class="order-2 sm:order-4 bg-themeCard hover:bg-themeCardHover border border-themeBorder px-4 py-2.5 rounded-xl text-themeText text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all">
                         Berikutnya <i class="fa-solid fa-arrow-right"></i>
                     </button>
-                </div>
-
-                <!-- Quick Selection Deck -->
-                <div class="w-full max-w-md mt-6 pt-6 border-t border-themeBorder/40">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-themeMuted mb-2">Pilih Kumpulan Soal:</label>
-                    <select id="flashcard-deck-select" onchange="loadFlashcardDeck(this.value)" class="w-full px-3 py-2 text-sm bg-themeCard border border-themeBorder rounded-lg focus:outline-none focus:ring-2 focus:ring-themeAccent text-themeText">
-                        <option value="all">Semua Soal (45 Kartu)</option>
-                        <option value="bab1">Bab 1: Limbah & Bangun Ruang (11 Kartu)</option>
-                        <option value="bab2">Bab 2: Usaha & Perizinan (15 Kartu)</option>
-                        <option value="bab3">Bab 3: Produksi Kerajinan (6 Kartu)</option>
-                        <option value="bab45">Bab 4-5: Kemasan & Promosi (13 Kartu)</option>
-                        <option value="review">Kartu Belum Lancar (Tandai di atas)</option>
-                    </select>
                 </div>
             </div>
         </div>
@@ -1773,18 +1871,18 @@
     </div>
 
     <!-- BOTTOM NAVIGATION BAR (Mobile Only) -->
-    <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-themeCard/95 backdrop-blur-md border-t border-themeBorder py-2.5 px-6 flex justify-around items-center z-40 shadow-lg transition-colors duration-300 non-focus-element">
-        <button onclick="switchTab('prioritas')" class="mobile-tab-btn flex flex-col items-center gap-1 text-themeAccent font-semibold transition-all">
-            <i class="fa-solid fa-list-check text-base"></i>
-            <span class="text-[10px] uppercase font-bold tracking-wider">Kisi-Kisi</span>
+    <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-themeCard/95 backdrop-blur-md border-t border-themeBorder py-1.5 px-4 flex justify-around items-center z-40 shadow-lg transition-colors duration-300 non-focus-element">
+        <button onclick="switchTab('prioritas')" class="mobile-tab-btn flex flex-col items-center gap-0.5 text-themeAccent font-semibold transition-all">
+            <i class="fa-solid fa-list-check text-sm"></i>
+            <span class="text-[9px] uppercase font-bold tracking-wider">Kisi-Kisi</span>
         </button>
-        <button onclick="switchTab('materi')" class="mobile-tab-btn flex flex-col items-center gap-1 text-themeMuted transition-all">
-            <i class="fa-solid fa-align-left text-base"></i>
-            <span class="text-[10px] uppercase font-bold tracking-wider">Materi</span>
+        <button onclick="switchTab('materi')" class="mobile-tab-btn flex flex-col items-center gap-0.5 text-themeMuted transition-all">
+            <i class="fa-solid fa-align-left text-sm"></i>
+            <span class="text-[9px] uppercase font-bold tracking-wider">Materi</span>
         </button>
-        <button onclick="switchTab('flashcard')" class="mobile-tab-btn flex flex-col items-center gap-1 text-themeMuted transition-all">
-            <i class="fa-solid fa-copy text-base"></i>
-            <span class="text-[10px] uppercase font-bold tracking-wider">Flashcards</span>
+        <button onclick="switchTab('flashcard')" class="mobile-tab-btn flex flex-col items-center gap-0.5 text-themeMuted transition-all">
+            <i class="fa-solid fa-copy text-sm"></i>
+            <span class="text-[9px] uppercase font-bold tracking-wider">Flashcards</span>
         </button>
     </nav>
 
@@ -2192,7 +2290,8 @@
             // 2. Search in Materi modul tab
             document.querySelectorAll('.accordion-item').forEach(item => {
                 const textContent = item.querySelector('.materi-text').textContent.toLowerCase();
-                const titleText = item.querySelector('h3').textContent.toLowerCase();
+                const titleElement = item.querySelector('.font-sans.font-semibold') || item.querySelector('h3');
+                const titleText = titleElement ? titleElement.textContent.toLowerCase() : '';
 
                 const isMatched = textContent.includes(cleanQuery) || titleText.includes(cleanQuery);
 
@@ -2202,7 +2301,7 @@
                         item.classList.add('active'); // Expand match
                     } else {
                         // Collapse all except Bab 1 on empty search
-                        if (!item.querySelector('h3').textContent.includes('Bab 1')) {
+                        if (!titleText.includes('bab 1')) {
                             item.classList.remove('active');
                         }
                     }
@@ -2247,6 +2346,18 @@
 
         function loadFlashcardDeck(deckType) {
             flashcardState.deck = deckType;
+
+            // Sync pill buttons style
+            document.querySelectorAll('.deck-btn').forEach(btn => {
+                btn.classList.remove('bg-themeAccent', 'text-white', 'border-themeAccent');
+                btn.classList.add('bg-themeCard', 'text-themeMuted', 'border-themeBorder');
+            });
+            const activeBtn = document.getElementById(`deck-btn-${deckType}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-themeCard', 'text-themeMuted', 'border-themeBorder');
+                activeBtn.classList.add('bg-themeAccent', 'text-white', 'border-themeAccent');
+            }
+
             let filtered = [];
 
             if (deckType === 'all') {
@@ -2405,17 +2516,25 @@
                 return;
             }
 
-            btnReview.className = "bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 px-4 py-2.5 rounded-xl text-rose-400 text-sm font-semibold flex items-center gap-1.5 transition-all";
-            btnMastered.className = "bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 px-4 py-2.5 rounded-xl text-emerald-400 text-sm font-semibold flex items-center gap-1.5 transition-all";
-
             const isReviewed = flashcardState.reviewList.includes(qid);
             const isMastered = progressState[qid] || false;
 
-            if (isReviewed) {
-                btnReview.className = "bg-rose-500 border border-rose-600 px-4 py-2.5 rounded-xl text-white text-sm font-semibold flex items-center gap-1.5 transition-all";
+            // Update Review button style
+            if (btnReview) {
+                if (isReviewed) {
+                    btnReview.className = "order-3 sm:order-2 col-span-1 bg-rose-500 border border-rose-600 px-3 py-2.5 rounded-xl text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 transition-all";
+                } else {
+                    btnReview.className = "order-3 sm:order-2 col-span-1 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 px-3 py-2.5 rounded-xl text-rose-400 text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 transition-all";
+                }
             }
-            if (isMastered) {
-                btnMastered.className = "bg-emerald-500 border border-emerald-600 px-4 py-2.5 rounded-xl text-white text-sm font-semibold flex items-center gap-1.5 transition-all";
+
+            // Update Mastered button style
+            if (btnMastered) {
+                if (isMastered) {
+                    btnMastered.className = "order-4 sm:order-3 col-span-1 bg-emerald-500 border border-emerald-600 px-3 py-2.5 rounded-xl text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 transition-all";
+                } else {
+                    btnMastered.className = "order-4 sm:order-3 col-span-1 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 px-3 py-2.5 rounded-xl text-emerald-400 text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 transition-all";
+                }
             }
         }
 
